@@ -1,0 +1,161 @@
+
+body {
+    font-family: helvetica,segoe ui,sans-serif;
+    padding:0;
+    margin:0;
+}
+p {
+    font-size: 12pt;
+    margin-left: 0.4cm;
+    margin-top: 0.2cm;
+    margin-bottom:0.2cm;
+}
+.wikitable {
+    border-width: 1px;
+    border-color: #888888;
+    border-style: dashed;
+    width:1000px;
+}
+th {
+    background-color: #dddddd;
+}
+.vl {
+    border-left: 1px solid #aaaaaa;
+    height: 40px;
+  }
+.playerName {
+    font-size: 20pt;
+    font-weight: bold;
+}
+.lastline {
+    background: #dddddd;
+}
+.cards {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+}
+.card {
+    flex: 0 1 24%;
+    border: .05rem solid #e6e6e6;
+    border-radius: .3rem;
+    -webkit-box-shadow: 0 0.3rem 0.4rem rgb(0 0 0 / 10%);
+    box-shadow: 0 0.3rem 0.4rem rgb(0 0 0 / 10%);
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: .05rem;
+    margin: 0 auto 2rem;
+    min-width: 350px;
+    max-width: 350px;
+    cursor:hand;
+}
+.card2 {
+    flex: 0 1 24%;
+    border: .05rem solid #e6e6e6;
+    border-radius: .3rem;
+    -webkit-box-shadow: 0 0.3rem 0.4rem rgb(0 0 0 / 10%);
+    box-shadow: 0 0.3rem 0.4rem rgb(0 0 0 / 10%);
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: .05rem;
+    margin: 0 auto 1rem;
+    min-width: 600px;
+    max-width: 600px;
+    padding:10px;
+    align-items: center;
+}
+.card3 {
+    flex: 0 1 24%;
+    border: .05rem solid #e6e6e6;
+    border-radius: .3rem;
+    -webkit-box-shadow: 0 0.3rem 0.4rem rgb(0 0 0 / 10%);
+    box-shadow: 0 0.3rem 0.4rem rgb(0 0 0 / 10%);
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: .05rem;
+    margin: 0 auto 1rem;
+    min-width: 1000px;
+    max-width: 1000px;
+    padding:10px;
+    align-items: center;
+}
+.flag {
+    border: 1px solid #333333;
+    height: 14px;
+    width: 20px;
+    vertical-align: text-bottom;
+}
+.flagSelector {
+    border: 1px solid #333333;
+    height: 28px;
+    width: 38px;
+    vertical-align: text-bottom;
+    opacity: 0.5;
+}
+.header {
+    background:black;
+    height:70px;
+    width:100%;
+    margin:0px;
+    vertical-align: top;
+}
+.filterBlock {
+    background:black;
+    height:70px;
+    width:100%;
+    margin:0px;
+    vertical-align: top;
+    display:inline;
+}
+.titletext {
+    font-size:22pt;
+    vertical-align:20px;
+}
+.league {
+    background: black;
+    color: #cccccc;
+}
+.playerpic {
+    width:350px;
+    height:350px;
+}
+
+.segmented {
+    display: inline-block;
+    vertical-align: top;
+    margin-top:0px;
+    margin-left:15px;
+}
+.segmented .label {
+    background-color: #eee;
+    
+    border: 1px #ccc;
+    border-style: solid none solid solid;
+    color: #777;
+    cursor: pointer;
+    float: left;
+    padding: 5px;
+    text-align: center;
+    width: 60px;
+}
+.segmented :first-child .label {
+    border-radius: 10px 0 0 10px;
+}
+.segmented :last-child .label {
+    border-radius: 0 10px 10px 0;
+    border-right-style: solid;
+}
+.segmented input {
+    display: none;
+}
+.segmented input:checked + .label {
+    background-color: #aaaaaa;
+    color: #fff;
+}
+
+.segmented .label {
+    
+}
+.segmented input:checked + span {
+    background-color: #999999;
+}
