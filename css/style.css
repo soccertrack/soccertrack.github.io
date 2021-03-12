@@ -16,6 +16,19 @@ th {
 .lastline {
     background: #dddddd;
 }
+.center {
+    text-align: left;
+    font-size:14pt;
+    width:100%;
+    border: dashed 1px black;
+}
+.LeagueTableTitle {
+    background-color:black;
+    color: white;
+    font-size:14pt;
+    text-align:center;
+    padding:5px;
+}
 .cards {
    display: flex;
    flex-wrap: wrap;
@@ -230,7 +243,6 @@ p {
     margin: 0 auto 2rem;
     min-width: 350px;
     max-width: 350px;
-    cursor:hand;
 }
 .card4 {
     border: .05rem solid #e6e6e6;
