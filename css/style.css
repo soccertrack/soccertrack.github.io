@@ -36,6 +36,10 @@ th {
     max-width: 350px;
     cursor:hand;
 }
+.card:hover {
+    border-color: black;
+    border-width: 3px;
+}
 .playerpic {
     width:350px;
     height:350px;
@@ -126,6 +130,7 @@ p {
         min-width: 675px;
         max-width: 675px;
         margin-bottom: 50px;
+        
     }
     .card .playerpic {
         width:650px;
