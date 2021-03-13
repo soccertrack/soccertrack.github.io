@@ -265,9 +265,7 @@ p {
     letter-spacing: .05rem;
     padding:10px;
     width:995;
-    margin-top:15px;
-    margin-bottom:15px;
-    
+    margin:15 auto;
 }
 
 .league {
