@@ -12,7 +12,7 @@
 <meta name="description" content="Tracking USMNT soccer players across leagues and clubs (Chelsea, Juventus, Dortmund, Lille, Barcelona) and player like Pulisic, McKennie, Adams, Weah etc"/> 
 <meta name="keywords" content="Pulisic, USMNT, soccer, McKennie, Juventus, Chelsea, MLS, Sounders, World Cup, Gold cup, Barcelona, Dest, Adams, Reyna, Dortmund, Weah, Lille, NYC FC, Orlando City, USSoccer"/>
       <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
-      <link rel="stylesheet" href="css/style.css?v=1615785936869"/>
+      <link rel="stylesheet" href="css/style.css?v=1615788362463"/>
       <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
       <script lang="javascript" src="js/client-dom.js"></script>
@@ -29,10 +29,15 @@
     </head>
     
     <body>
+       
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0&appId=1113475129117088&autoLogAppEvents=1" nonce="AIhtLd3Z"></script>
         <div class="header">
             <img src="img/USSoccer.png" class="logo"/>
             <span class="titletext" style="color:#773333;"><i>SOCCER</i></span>
             <span class="titletext" style="color:#333377;"><b>TRACK</b></span>
+            <div style="float:right" class="fb-like" data-href="https://ussoccertrack.com" data-width="" data-layout="button" data-action="like" data-size="small" data-share="true"></div>
+            </div>
         </div>
         <div id="filterBlock" class="filterBlock">
             <div style="background-color:#555555;padding:4px;">
@@ -42,8 +47,7 @@
                <label><input type="radio" name="post" value="defense" onclick="filterByPosition('Defense');"><span class="label">defense</span></label>
                <label><input type="radio" name="post" value="midfield" onclick="filterByPosition('Midfield');"><span class="label">midfield</span></label>
                <label><input type="radio" name="post" value="forward" onclick="filterByPosition('Forward');"><span class="label">forward</span></label>
-           </span>
-            </div>
+            </span>
          </div>              
         <div class="centered">
             <section class="cards" id="cardContainer">
