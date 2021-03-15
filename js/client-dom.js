@@ -1,3 +1,22 @@
+function getParamByName(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return null;
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+function processLoad() {
+    let position = getParamByName("pos");
+    if (position != null) {
+        if (position == "midfield" || position == "forward" ||
+            position == "defense" || position == "keeper") {
+                filterByPosition(position);
+            }
+    }
+}
+
 function processClick(id) {
     let isMobile = /iPhone|Android/i.test(navigator.userAgent);
     let path = (isMobile)
