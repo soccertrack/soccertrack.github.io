@@ -1,0 +1,43 @@
+<html>
+   <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
+  <script lang="javascript" src="./js/forms.js"></script>
+  <script type="text/javascript" src="./js/html2canvas.js"></script>
+
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
+  <style>
+    div { font-family: 'open sans';font-size:12;}
+    .player {position:absolute;background:black;color:white;height:25px;width:100;text-align:center;font-weight:bold;}
+    .club {background:pink;color:black;font-size:9pt;}
+    .playerButton {position:absolute;width:50px;height:50px;border-radius:25px;border:dashed 1px black;}
+    .playerName {font-size:13;}
+    .downloadButton {position:absolute;top:82px;left:757px;cursor:hand;color:white;background-color:green;border-radius:6px;text-align:center;padding:3px;font-size:11pt; width:140px; height:28px; border: solid black 1px;}
+    .selectButton {text-align:center;display:none;background-color:white;width:150;height:40;margin:3;font-size:13px;border: dashed 1px black;cursor:hand;}
+  </style>
+  </head>
+
+<body onload="load();">
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0&appId=1113475129117088&autoLogAppEvents=1" nonce="AIhtLd3Z"></script>
+
+        <div class="header">
+            <img src="img/USSoccer.png" class="logo"/>
+            <span class="titletext" style="color:#773333;"><i>SOCCER</i></span>
+            <span class="titletext" style="color:#333377;"><b>TRACK</b></span>
+            <div style="float:right;margin-top:3px;" class="fb-like" data-href="https://ussoccertrack.com" data-width="" data-layout="button" data-action="like" data-size="small" data-share="true"></div>
+            <div class="downloadButton" onclick="screenshot();">Download my team</div>
+        </div>
+<span class="segmented" id="selector" style="position:absolute;top:85;left:15">
+</span>
+
+   <div id="field" style="position:absolute;top:120px;left:20px;width:885; height: 626; background-image:url('./img/field.jpeg');" onClick="hidePlayerOptions();">
+       <img src="./img/ussoccer.png" style="position:absolute;top:520;left:750;opacity:0.5;width:125px;height:125px;"/>
+   </div>
+
+   <div id="selectContainer" style="position:absolute; display:none;flex-flow:column wrap;align-content: flex-start;top:0; left:650; height:580; width:400px;background-color:gray;"/>
+</body>
+</html>
