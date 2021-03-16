@@ -62,6 +62,16 @@ function getPlayers(){
         let order = target.getAttribute('data-order');
         let item = getPlayers()[order];
 
+        let img = createPlayerImage(item.name);
+        for(let i=0;i<lastTarget.childNodes.length;++i) {
+            let node = lastTarget.childNodes[i];
+            if (node.tagName == 'IMG') {
+                lastTarget.removeChild(node);
+                break;
+            }
+        }
+        lastTarget.appendChild(img);
+
         let divElement = lastTarget.nextSibling;
         let playerNameElement = divElement.getElementsByClassName('playerName')[0];
         let clubNameElement = divElement.getElementsByClassName('club')[0];
@@ -162,6 +172,15 @@ function getPlayers(){
         while (fieldElement.firstChild) {
             fieldElement.removeChild(fieldElement.firstChild);
         }
+    }
+
+    function createPlayerImage(playerName) {
+        let name = playerName.replaceAll(' ', '');
+        let imgElement = document.createElement('img');
+        imgElement.src = 'jpeg/small/' + name + '.jpg';
+        imgElement.style.width = 40;
+        imgElement.style.height = 40;
+        return imgElement;
     }
 
     function createLogo(fieldElement) {
