@@ -155,12 +155,34 @@ function getPlayers(){
             fieldElement.appendChild(createButton(currPosition));
             fieldElement.appendChild(createLabel(currPosition));
         }
+        createLogo(fieldElement);
     }
 
     function clearField(fieldElement) {
         while (fieldElement.firstChild) {
             fieldElement.removeChild(fieldElement.firstChild);
         }
+    }
+
+    function createLogo(fieldElement) {
+        let imgElement = document.createElement('img');
+        imgElement.src = './img/ussoccer.png';
+        imgElement.style.position = 'absolute';
+        imgElement.style.top = 40;
+        imgElement.style.left = 750;
+        imgElement.style.opacity = 0.3;
+        imgElement.style.width = 125;
+        imgElement.style.height = 125;
+
+        let divElement = document.createElement('div');
+        divElement.innerText = "created with ussoccertrack.com";
+        divElement.style.position = 'absolute';
+        divElement.style.color = '#111111';
+        divElement.style.top = 45;
+        divElement.style.left = 665;
+
+        fieldElement.appendChild(imgElement);
+        fieldElement.appendChild(divElement);
     }
 
     function load() {
