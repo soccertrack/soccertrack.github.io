@@ -166,7 +166,7 @@ function getPlayers(){
 
     function createLogo(fieldElement) {
         let imgElement = document.createElement('img');
-        imgElement.src = 'https://ussoccertrack.com/img/ussoccer.png';
+        imgElement.src = 'img/USSoccer.png';
         imgElement.style.position = 'absolute';
         imgElement.style.top = 40;
         imgElement.style.left = 750;
@@ -201,8 +201,13 @@ function getPlayers(){
 
     function screenshot(){
         html2canvas(document.getElementById('field'), {useCORS:true}).then(function(canvas) {
+            let ctx = canvas.getContext('2d');
+            ctx.webkitImageSmoothingEnabled = true;
+            ctx.mozImageSmoothingEnabled = true;
+            ctx.imageSmoothingEnabled = true;
+
             let aElement = document.createElement('a');
-            aElement.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
+            aElement.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
             aElement.download = 'myusmnt-selection.jpg';
             aElement.click();
         });
