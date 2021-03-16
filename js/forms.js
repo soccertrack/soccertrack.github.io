@@ -166,7 +166,7 @@ function getPlayers(){
 
     function createLogo(fieldElement) {
         let imgElement = document.createElement('img');
-        imgElement.src = './img/ussoccer.png';
+        imgElement.src = 'https://ussoccertrack.com/img/ussoccer.png';
         imgElement.style.position = 'absolute';
         imgElement.style.top = 40;
         imgElement.style.left = 750;
