@@ -16,7 +16,12 @@
  
   <script lang="javascript" src="./js/forms.js?1"></script>
   <script type="text/javascript" src="./js/html2canvas.js"></script>
-
+  <script>
+    let isMobile = /iPhone|Android/i.test(navigator.userAgent);
+    if (isMobile) {
+      location.href = 'picker_secret.html';
+    }
+  </script>
   <link rel="stylesheet" href="css/style.css"/>
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
   <style>
