@@ -33,8 +33,11 @@ function getPlayers(){
         divElement.className = 'player';
         divElement.style.top = currPosition.top + 55;
         divElement.style.left = currPosition.left - 30;
+        divElement.style.height = 25;
+        divElement.style.width = 110;
+        divElement.style.textAlign = 'center';
 
-        divElement.innerHTML = '<span class="playerName">Player Name</span><br><div class="club">Club Name</div>';
+        divElement.innerHTML = '<span class="playerName" style="font-size:10pt;">Player Name</span><br><div class="club" style="background:pink;color:black;font-size:9pt;">Club Name</div>';
         return divElement;
     }
 
@@ -199,7 +202,7 @@ function getPlayers(){
         divElement.style.color = '#111111';
         divElement.style.fontSize = '10px';
         divElement.style.top = 45;
-        divElement.style.left = 665;
+        divElement.style.left = 685;
         divElement.style.width = 215;
 
         fieldElement.appendChild(imgElement);
