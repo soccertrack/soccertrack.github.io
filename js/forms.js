@@ -197,6 +197,7 @@ function getPlayers(){
         divElement.innerText = "created with ussoccertrack.com";
         divElement.style.position = 'absolute';
         divElement.style.color = '#111111';
+        divElement.style.fontSize = '10px';
         divElement.style.top = 45;
         divElement.style.left = 665;
         divElement.style.width = 215;
