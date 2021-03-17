@@ -241,6 +241,7 @@ function saveToImgur(){
     
         fetch('https://api.imgur.com/3/image', {
             method: 'POST',
+            mode: 'cors',
             headers: {
                 Authorization: 'Client-ID 1aa2a0872cf6b8a',
             },
