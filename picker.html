@@ -8,11 +8,11 @@
         
   <meta property="og:url"           content="https://ussoccertrack.com/picker.html" />
   <meta property="og:type"          content="website" />
-  <meta property="og:title"         content="ussoccertrack USMNT picker" />
+  <meta property="og:title"         content="ussoccertrack - USMNT team picker" />
   <meta property="og:description"   content="Pick my USMNT team" />
   <meta property="og:image"         content="https://ussoccertrack.com/img/hero.jpg" /> 
   <meta name="description" content="Selecting your own USMNT team players."/> 
-  <meta name="keywords" content="Pulisic, USMNT, picker, soccer, McKennie, Juventus, Chelsea, MLS, Sounders, World Cup, Gold cup, Barcelona, Dest, Adams, Reyna, Dortmund, Weah, Lille, NYC FC, Orlando City, USSoccer"/>
+  <meta name="keywords" content="Pulisic, USMNT, picker, soccer, McKennie, Juventus, Chelsea, MLS, Sounders, World Cup, Gold cup, Barcelona, Dest, Adams, Reyna, Dortmund, Weah, Lille, NYC FC, Orlando City, USSoccer, fantasy, picker"/>
  
   <script lang="javascript" src="./js/forms.js?1"></script>
   <script type="text/javascript" src="./js/html2canvas.js"></script>
@@ -25,8 +25,8 @@
     .club {background:pink;color:black;font-size:9pt;}
     .playerButton {position:absolute;width:50px;height:50px;border-radius:25px;border:dashed 1px black;}
     .playerName {font-size:10pt;}
-    .downloadButton {position:absolute;top:122px;left:757px;cursor:hand;color:white;background-color:green;border-radius:6px;text-align:center;padding:3px;font-size:11pt; width:140px; height:28px; border: solid black 1px;}
-    .selectButton {text-align:center;display:none;background-color:white;width:150;height:40;margin:3;font-size:13px;border: dashed 1px black;cursor:hand;}
+    .downloadButton {position:absolute;top:118px;left:767px;background-color:white;width:190px; height:40px; }
+    .selectButton {text-align:center;display:none;background-color:white;width:150;height:40;margin:3;font-size:13px;}
   </style>
   </head>
 
@@ -38,9 +38,14 @@
             <img src="img/USSoccer.png" class="logo"/>
             <span class="titletext" style="color:#773333;"><i>SOCCER</i></span>
             <span class="titletext" style="color:#333377;"><b>TRACK</b></span>
-            <div style="float:right;margin-top:3px;" class="fb-like" data-href="https://ussoccertrack.com" data-width="" data-layout="button" data-action="like" data-size="small" data-share="true"></div>
+            <div style="float:right;margin-top:3px;" class="fb-like" data-href="https://ussoccertrack.com/picker.html" data-width="" data-layout="button" data-action="like" data-size="small" data-share="false"></div>
         </div>
-        <div class="downloadButton" onclick="screenshot();">Download my team</div>
+        <div class="downloadButton" style="flow:flex">
+          <img src="./img/fb.png" width="30" height="30" style="cursor:hand;border: solid 1px black;cursor:hand;" onclick="shareToFacebook();"/>
+          <img src="./img/twitter.png" width="30" height="30" style="cursor:hand;border: solid 1px black;cursor:hand;" onclick="shareToTwitter();"/>
+          <img src="./img/link.webp" width="30" height="30" style="cursor:hand;background-color:#eeeeee;border: solid 1px black;cursor:hand;" onclick="getLink();"/>
+          <img src="./img/download.webp" width="30" height="30" style="cursor:hand;border:solid 1px black;cursor:hand;" onclick="download();"/>
+        </div>
 
         <div style="margin-top:18px;margin-left:22px;font-size:11pt;"><b>Instructions:</b> 1. Pick formation (eg.4-4-2) 2. Pick team by cicking on a position (eg. GK) 3. Download.</div>
 <span class="segmented" id="selector" style="position:absolute;top:125;left:15">

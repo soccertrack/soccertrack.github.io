@@ -224,7 +224,7 @@ function getPlayers(){
         populateField(fieldElement, formations[0].team);
     }
 
-    function screenshot(){
+    function download(){
         html2canvas(document.getElementById('field'), {useCORS:true}).then(function(canvas) {
             let ctx = canvas.getContext('2d');
             ctx.webkitImageSmoothingEnabled = true;
@@ -238,42 +238,54 @@ function getPlayers(){
         });
     }
 
-/*
-function screenshot(){
-  window.open(
-    'https://www.facebook.com/sharer/sharer.php?u=https://i.imgur.com/jMe028g.jpg',
-    'facebook-share-dialog', 
-    'width=626,height=436'); 
-}
-
-function screenshot(){
-  window.open(
-    'https://twitter.com/share?text=My USMNT pick (created with ussoccertrack.com)&url=https://i.imgur.com/jMe028g.jpg&hashtags=#USMNT,#USSoccertrack',
-    'twitter-share-dialog', 
-    'width=626,height=436'); 
-}
-*/
-
-function saveToImgur(){
-    html2canvas(document.getElementById('field'), {useCORS: true}).then(function(canvas) {
-        const formData = new FormData();
-        formData.append('image', canvas.toDataURL("image/png").split(',')[1]);
-    
-        fetch('https://api.imgur.com/3/image', {
-            method: 'POST',
-            mode: 'cors',
-            headers: {
-                Authorization: 'Client-ID 1aa2a0872cf6b8a',
-            },
-            body: formData
-        }).then(response => {
-            if (response.ok) {
-                response.json().then(data => {
-                    alert(data.data.link);
-                });
-            }
-        }).catch(error => {
-            alert(error);
+    function getLink() {
+        saveToImgur(function(url) {
+            navigator.clipboard.writeText(url).then(function() {
+                alert('copied ' + url + " to clipboard");
+            }, function(err) {
+            console.error('Async: Could not copy text: ', err);
+            });
         });
-    });
-}
+    }
+
+    function shareToFacebook() {
+        saveToImgur(function(url) {
+            window.open(
+                'https://www.facebook.com/sharer/sharer.php?u=' + url,
+                'facebook-share-dialog', 
+                'width=626,height=436'); 
+            });
+    }
+
+    function shareToTwitter(url) {
+        saveToImgur(function(url) {
+            window.open(
+                'https://twitter.com/share?text=My USMNT pick (with ussoccertrack.com)&url=' + url + '&hashtags=#USMNT,#ussoccertrack',
+                'twitter-share-dialog', 
+                'width=626,height=436'); 
+            });
+    }
+
+    function saveToImgur(chainFunction){
+        html2canvas(document.getElementById('field'), {useCORS: true}).then(function(canvas) {
+            const formData = new FormData();
+            formData.append('image', canvas.toDataURL("image/png").split(',')[1]);
+        
+            fetch('https://api.imgur.com/3/image', {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    Authorization: 'Client-ID 1aa2a0872cf6b8a',
+                },
+                body: formData
+            }).then(response => {
+                if (response.ok) {
+                    response.json().then(data => {
+                        chainFunction(data.data.link);
+                    });
+                }
+            }).catch(error => {
+                alert(error);
+            });
+        });
+    }
