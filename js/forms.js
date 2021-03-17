@@ -31,6 +31,7 @@ function getPlayers(){
     function createLabel(currPosition) {
         let divElement = document.createElement('div');
         divElement.className = 'player';
+        divElement.style.position = 'absolute';
         divElement.style.top = currPosition.top + 55;
         divElement.style.left = currPosition.left - 30;
         divElement.style.height = 25;
