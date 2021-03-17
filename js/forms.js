@@ -238,6 +238,18 @@ function getPlayers(){
         });
     }
 
+    function getLink2() {
+        saveToImgur(function(url) {
+            navigator.clipboard.writeText(url).then(function() {
+                let aElement = document.createElement('a');
+                aElement.href = url;
+                aElement.click();
+            }, function(err) {
+            console.error('Async: Could not copy text: ', err);
+            });
+        });
+    }
+
     function getLink() {
         saveToImgur(function(url) {
             navigator.clipboard.writeText(url).then(function() {
