@@ -263,8 +263,9 @@ function saveToImgur(){
             body: formData
         }).then(response => {
             if (response.ok) {
-               let jsonData = response.json();
-               alert(jsonData.data.id);
+                response.json().then(data => {
+                    alert(JSON.stringify(data));
+                });
             }
         }).catch(error => {
             alert(error);
