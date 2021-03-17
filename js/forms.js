@@ -260,7 +260,7 @@ function getPlayers(){
     function shareToTwitter(url) {
         saveToImgur(function(url) {
             window.open(
-                'https://twitter.com/share?url=' + url + '&text=My USMNT team pick (with ussoccertrack.com)&hashtags=#USMNT,#ussoccertrack',
+                'https://twitter.com/share?url=' + url + '&text=My USMNT team pick ' + url + '(with ussoccertrack.com)&hashtags=#USMNT,#ussoccertrack',
                 'twitter-share-dialog', 
                 'width=626,height=436'); 
             });
