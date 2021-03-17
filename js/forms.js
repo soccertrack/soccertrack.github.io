@@ -264,7 +264,7 @@ function saveToImgur(){
         }).then(response => {
             if (response.ok) {
                 response.json().then(data => {
-                    alert(data.data.link));
+                    alert(data.data.link);
                 });
             }
         }).catch(error => {
