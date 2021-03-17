@@ -232,3 +232,26 @@ function getPlayers(){
             aElement.click();
         });
     }
+
+
+function saveToImgur(){
+    html2canvas(document.getElementById('field'), {useCORS: true}).then(function(canvas) {
+        const formData = new FormData();
+        formData.append('image', canvas.toDataURL("image/png").split(',')[1]);
+    
+        fetch('https://api.imgur.com/3/image', {
+            method: 'POST',
+            headers: {
+                Authorization: 'Client-ID 1aa2a0872cf6b8a',
+            },
+            body: formData
+        }).then(response => {
+            console.log(response);
+            if (response.ok) {
+
+            }
+        }).catch(error => {
+            console.error(error);
+        });
+    });
+}
