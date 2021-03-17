@@ -264,10 +264,10 @@ function saveToImgur(){
         }).then(response => {
             if (response.ok) {
                let jsonData = response.json();
-               console.log(jsonData.data.link);
+               alert(jsonData.data.link);
             }
         }).catch(error => {
-            console.log(error);
+            alert(error);
         });
     });
 }
