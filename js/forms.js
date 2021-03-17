@@ -246,12 +246,10 @@ function saveToImgur(){
             },
             body: formData
         }).then(response => {
-            console.log(response);
             if (response.ok) {
-
+               alert(JSON.stringify(response.json()));
             }
         }).catch(error => {
-            console.error(error);
         });
     });
 }
