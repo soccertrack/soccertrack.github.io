@@ -233,6 +233,21 @@ function getPlayers(){
         });
     }
 
+/*
+function screenshot(){
+  window.open(
+    'https://www.facebook.com/sharer/sharer.php?u=https://i.imgur.com/jMe028g.jpg',
+    'facebook-share-dialog', 
+    'width=626,height=436'); 
+}
+
+function screenshot(){
+  window.open(
+    'https://twitter.com/share?text=My USMNT pick (created with ussoccertrack.com)&url=https://i.imgur.com/jMe028g.jpg&hashtags=#USMNT,#USSoccertrack',
+    'twitter-share-dialog', 
+    'width=626,height=436'); 
+}
+*/
 
 function saveToImgur(){
     html2canvas(document.getElementById('field'), {useCORS: true}).then(function(canvas) {
@@ -249,9 +264,10 @@ function saveToImgur(){
         }).then(response => {
             if (response.ok) {
                let jsonData = response.json();
-               alert(jsonData.data.link);
+               console.log(jsonData.data.link);
             }
         }).catch(error => {
+            console.log(error);
         });
     });
 }
