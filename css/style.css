@@ -136,6 +136,7 @@ p {
     text-align: center;
     width: 60px;
 }
+TH {text-align:left;}
 
 .L {
     border:solid 1px black;margin:1px;width:20px;height:20px;background-color:#ffaaaa;float:right;text-align:center;font-size:11px;
