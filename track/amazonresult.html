@@ -47,9 +47,9 @@
 										</header>
 										<h2>2021</h2>
 										<hr>
-										<h4>No. of orders: <span id="numOrders">64</span></h4>
-										<h4>Total Purchases: <span id="totalAmt">$5200.40</span></h4>
-										<h4>Total Sales Tax Paid: <span id="salesTax">$580.00</span></h4>
+										<h4>No. of orders: <span id="numOrders">0</span></h4>
+										<h4>Total Purchases: <span id="totalAmt">$0.0</span></h4>
+										<h4>Total Sales Tax Paid: <span id="salesTax">$0.00</span></h4>
 										<hr>
 										<div><canvas id="doughnut-chart" width="700" height="450"></canvas></div>
 										<hr>
@@ -61,63 +61,63 @@
 											</tr>
 											<tr>
 												<td>January</td>
-												<td class="OrderQuantity">3</td>
-												<td class="OrderAmount">$300</td>
+												<td class="OrderQuantity">0</td>
+												<td class="OrderAmount">$0</td>
 											</tr>
 											<tr>
 												<td>February</td>
-												<td class="OrderQuantity">3</td>
-												<td class="OrderAmount">$300</td>
+												<td class="OrderQuantity">0</td>
+												<td class="OrderAmount">$0</td>
 											</tr>
 											<tr>
 												<td>March</td>
-												<td class="OrderQuantity">3</td>
-												<td class="OrderAmount">$300</td>
+												<td class="OrderQuantity">0</td>
+												<td class="OrderAmount">$0</td>
 											</tr>
 											<tr>
 												<td>April</td>
-												<td class="OrderQuantity">3</td>
-												<td class="OrderAmount">$300</td>
+												<td class="OrderQuantity">0</td>
+												<td class="OrderAmount">$0</td>
 											</tr>
 											<tr>
 												<td>May</td>
-												<td class="OrderQuantity">3</td>
-												<td class="OrderAmount">$300</td>
+												<td class="OrderQuantity">0</td>
+												<td class="OrderAmount">$0</td>
 											</tr>
 											<tr>
 												<td>June</td>
-												<td class="OrderQuantity">3</td>
-												<td class="OrderAmount">$300</td>
+												<td class="OrderQuantity">0</td>
+												<td class="OrderAmount">$0</td>
 											</tr>
 											<tr>
 												<td>July</td>
-												<td class="OrderQuantity">3</td>
-												<td class="OrderAmount">$300</td>
+												<td class="OrderQuantity">0</td>
+												<td class="OrderAmount">$0</td>
 											</tr>
 											<tr>
 												<td>August</td>
-												<td class="OrderQuantity">3</td>
-												<td class="OrderAmount">$300</td>
+												<td class="OrderQuantity">0</td>
+												<td class="OrderAmount">$0</td>
 											</tr>
 											<tr>
 												<td>September</td>
-												<td class="OrderQuantity">3</td>
-												<td class="OrderAmount">$300</td>
+												<td class="OrderQuantity">0</td>
+												<td class="OrderAmount">$0</td>
 											</tr>
 											<tr>
 												<td>October</td>
-												<td class="OrderQuantity">3</td>
-												<td class="OrderAmount">$300</td>
+												<td class="OrderQuantity">0</td>
+												<td class="OrderAmount">$0</td>
 											</tr>
 											<tr>
 												<td>November</td>
-												<td class="OrderQuantity">3</td>
-												<td class="OrderAmount">$300</td>
+												<td class="OrderQuantity">0</td>
+												<td class="OrderAmount">$0</td>
 											</tr>
 											<tr>
 												<td>December</td>
-												<td class="OrderQuantity">3</td>
-												<td class="OrderAmount">$300</td>
+												<td class="OrderQuantity">0</td>
+												<td class="OrderAmount">$0</td>
 											</tr>
 										</table>
 										
@@ -331,6 +331,11 @@
 					totalAmtElement.innerText = "$" + amountTotal;
 					
 				}
+
+				document.addEventListener('amazonResultEvent', function (e) {
+					let data = e.detail;
+					updateResults(data[0], data[1], data[2]);
+				});
 		</script>
 
 
