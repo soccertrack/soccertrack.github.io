@@ -26,7 +26,7 @@
 
 								<!-- Sidebar -->
 									<section class="box">
-										<a href="#" class="image featured"><img src="images/AMZN.jpg" alt="" /></a>
+										<a href="#" class="image featured"><img src="images/WM.jpg" alt="" /></a>
 										<header>
 											<h3>TrackSpendR Home</h3>
 										</header>
@@ -53,6 +53,7 @@
 										<hr>
 										<div><canvas id="doughnut-chart" width="700" height="450"></canvas></div>
 										<hr>
+										<div><canvas id="bar-chart" width="700" height="450"></canvas></div>
 										<table>
 											<tr style="background-color: lightgray;">
 												<td><b>Month</b></td>
@@ -144,12 +145,8 @@
 					labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
 					datasets: [
 						{
-						label: "Amazon Spending (outer ring), Order Amount (inner ring)",
-						backgroundColor: ["#000000", "#DD1111","#226622","#3333DD","#884444", "#558855", "#666688", "#997777", "#889988", "#9999aa", "#ffaaaa", "#bbffbb"],
-						data: []
-						},
-						{
-						backgroundColor: ["#000000", "#DD1111","#226622","#3333DD","#884444", "#558855", "#666688", "#997777", "#889988", "#9999aa", "#ffaaaa", "#bbffbb"],
+						label: "Amazon Spending ($)",
+						backgroundColor: ["#000000", "#333333","#666666","#999999","#CCCCCC", "#00CC00", "#33CC33", "#66CC66", "#99CC99", "#0000CC", "#3333CC", "#6666CC"],
 						data: []
 						}
 					]
@@ -158,7 +155,28 @@
 						responsive: true,
 						title: {
 							display: true,
-							text: "Amazon Spending $ (outer ring), Order Quantity (inner ring)"
+							text: "Amazon Spending $"
+						}
+					}
+				};
+
+				const dataSet2 = {
+					type: 'bar',
+					data: {
+					labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+					datasets: [
+						{
+						label: "Amazon Quantity",
+						backgroundColor: ["#000000", "#333333","#666666","#999999","#CCCCCC", "#00CC00", "#33CC33", "#66CC66", "#99CC99", "#0000CC", "#3333CC", "#6666CC"],
+						data: []
+						}
+					]
+					},
+					options: {
+						legend: { display: false },
+					title: {
+						display: true,
+						text: 'Order Quantity'
 						}
 					}
 				};
@@ -169,13 +187,14 @@
 					var amountTotal = 0;
 
 					dataSet.data.datasets[0].data = amt;
-					dataSet.data.datasets[1].data = units;
+					dataSet2.data.datasets[0].data = units;
 
 					new Chart(document.getElementById("doughnut-chart"), dataSet);
+					new Chart(document.getElementById("bar-chart"), dataSet2);
 
 					const quantities = document.getElementsByClassName("OrderQuantity"); 
 					for(var i=0;i<quantities.length;++i){
-						let num = dataSet.data.datasets[1].data[i];
+						let num = dataSet2.data.datasets[0].data[i];
 						quantities[i].innerText = num;
 						unitTotal += num;
 
@@ -196,7 +215,6 @@
 					
 					let totalAmtElement = document.getElementById("totalAmt");
 					totalAmtElement.innerText = "$" + amountTotal.toFixed(2);
-					
 				}
 
 				document.addEventListener('amazonResultEvent', function (e) {
