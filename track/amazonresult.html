@@ -317,7 +317,7 @@
 					const amounts = document.getElementsByClassName("OrderAmount");
 					for(var i=0;i<amounts.length;++i){
 						let num = dataSet.data.datasets[0].data[i];
-						amounts[i].innerText = dataSet.data.datasets[0].data[i];
+						amounts[i].innerText = dataSet.data.datasets[0].data[i].toFixed(2);
 						amountTotal += num;
 					}
 
@@ -328,7 +328,7 @@
 					numOrdersElement.innerText = unitTotal;
 					
 					let totalAmtElement = document.getElementById("totalAmt");
-					totalAmtElement.innerText = "$" + amountTotal;
+					totalAmtElement.innerText = "$" + amountTotal.toFixed(2);
 					
 				}
 
