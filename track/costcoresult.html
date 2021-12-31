@@ -166,7 +166,7 @@
 					labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
 					datasets: [
 						{
-						label: "Amazon Quantity",
+						label: "Costco Quantity",
 						backgroundColor: ["#000000", "#333333","#666666","#999999","#CCCCCC", "#00CC00", "#33CC33", "#66CC66", "#99CC99", "#0000CC", "#3333CC", "#6666CC"],
 						data: []
 						}
@@ -217,7 +217,7 @@
 					totalAmtElement.innerText = "$" + amountTotal.toFixed(2);
 				}
 
-				document.addEventListener('amazonResultEvent', function (e) {
+				document.addEventListener('costcoResultEvent', function (e) {
 					let data = e.detail;
 					updateResults(data[0], data[1], data[2]);
 				});
