@@ -237,7 +237,7 @@
 					var content = "data:text/csv;charset=utf-8,Date,OrderId,Type,SubTotal,SalesTax,OrderUrl\n";
 					
 					details.forEach(item => {
-						let row = item.date.replace(',', ' ') + "," + item.order + "," + item.type + "," + item.subTotalAmt + "," + item.taxTotalAmt + "," + item.orderUrl + "\n";
+						let row = item.date.replace(',', ' ') + ",'" + item.order + "''," + item.type + "," + item.subTotalAmt + "," + item.taxTotalAmt + "," + item.orderUrl + "\n";
 						content += row;
 					});
 					console.log(content);
