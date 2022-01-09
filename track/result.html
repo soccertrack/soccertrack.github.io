@@ -15,9 +15,8 @@
 				let img = params.get("img");
 
 				window.title = "TrackSpendr - " + merchant + " result";
-				document.getElementById("year").innerText = year;
 				document.getElementById("img").src = "images/" + img;
-				document.getElementById("spendingTitle").innerText = "Your " + merchant + " Spending";
+				document.getElementById("spendingTitle").innerText = "Your " + merchant + " Spending for " + year;
 				document.getElementById("generationTitle").innerText = "Report generated from analyzing your " + merchant + " spending via TrackSpendR technology.";
 			}
 					</script>
@@ -57,9 +56,12 @@
 									<article class="box post">
 										<header>
 											<h2 id="spendingTitle">Your Spending</h2>
-											<p id="generationTitle">Report generated from analyzing your spending via TrackSpendR technology.</p>
+											<p id="generationTitle">Report generated from analyzing your spending via TrackSpendR technology.
+
 										</header>
-										<h2 id="year">2021</h2>
+										<footer>
+											<a id="csvDownload" style="background-color: darkgreen;" class="button alt">Download Order Details (CSV)</a>
+										</footer>
 										<hr>
 										<h4>No. of orders: <span id="numOrders">0</span></h4>
 										<h4>Total Purchases: <span id="totalAmt">$0.0</span></h4>
@@ -231,9 +233,24 @@
 					totalAmtElement.innerText = "$" + amountTotal.toFixed(2);
 				}
 
+				function updateCSV(details) {
+					var content = "data:text/csv;charset=utf-8,Date,Order#,Type,SubTotal,SalesTax,OrderUrl\n";
+					details.forEach(item => {
+						let row = item.date + "," + item.order + "," + item.type + "," + item.subTotalAmt + "," + item.taxTotalAmt + "," + item.orderUrl + "\n";
+						content += row;
+					});
+					
+					let link = document.getElementById("csvDownload");
+					link.setAttribute("href", encodeURI(content));
+					link.setAttribute("download", "data.csv");
+				}
+
 				document.addEventListener('resultEvent', function (e) {
 					let data = e.detail;
-					updateResults(data[0], data[1], data[2]);
+					let summary = data[0];
+					let details = data[1];
+					updateResults(summary[0], summary[1], summary[2]);
+					updateCSV(details);
 				});
 		</script>
 
