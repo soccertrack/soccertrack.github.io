@@ -8,19 +8,21 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 		<script>
-			let params = new URLSearchParams(window.location.search);
-			let merchant = params.get("merchant");
-			let year = params.get("year");
-			let img = params.get("img");
+			function load() {
+				let params = new URLSearchParams(window.location.search);
+				let merchant = params.get("merchant");
+				let year = params.get("year");
+				let img = params.get("img");
 
-			window.title = "TrackSpendr - " + merchant + " result";
-			document.getElementById("year").innerText = year;
-			document.getElementById("img").src = "images/" + img;
-			document.getElementById("spendingTitle").innerText = "Your " + merchant + " Spending";
-			document.getElementById("generationTitle").innerText = "Report generated from analyzing your " + merchant + " spending via TrackSpendR technology.";
-		</script>
+				window.title = "TrackSpendr - " + merchant + " result";
+				document.getElementById("year").innerText = year;
+				document.getElementById("img").src = "images/" + img;
+				document.getElementById("spendingTitle").innerText = "Your " + merchant + " Spending";
+				document.getElementById("generationTitle").innerText = "Report generated from analyzing your " + merchant + " spending via TrackSpendR technology.";
+			}
+					</script>
 	</head>
-	<body class="left-sidebar is-preload">
+	<body class="left-sidebar is-preload" onload="load">
 		<div id="page-wrapper">
 
 			<!-- Header -->
