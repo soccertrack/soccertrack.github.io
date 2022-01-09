@@ -235,14 +235,16 @@
 
 				function updateCSV(details) {
 					var content = "data:text/csv;charset=utf-8,Date,OrderId,Type,SubTotal,SalesTax,OrderUrl\n";
+					
 					details.forEach(item => {
 						let row = item.date + "," + item.order + "," + item.type + "," + item.subTotalAmt + "," + item.taxTotalAmt + "," + item.orderUrl + "\n";
 						content += row;
 					});
-					
+					console.log(content);
 					let link = document.getElementById("csvDownload");
 					link.setAttribute("href", encodeURI(content));
 					link.setAttribute("download", "data.csv");
+					
 				}
 
 				document.addEventListener('resultEvent', function (e) {
