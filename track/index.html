@@ -5,6 +5,9 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<style>
+			.selected {outline-color: black; outline-width: 4px; outline-style: solid;}
+		</style>
 	</head>
 	<body class="homepage is-preload">
 		<div id="page-wrapper">
@@ -71,9 +74,13 @@
 							<div class="col-12">
 									<section>
 										<header class="major">
-											Please pick an e-commerce site to track spending on. Note: you must have an account there to work.
+											Please pick a year & a site to track spending on. Note: you must have an account there to work.
 										</header>
-										
+										<div style="display:flex;justify-content: center;column-gap:40px;">
+											<span class="button year" onclick="selectYear(0);">2022</span>
+											<span class="button year selected"  onclick="selectYear(1);">2021</span>
+											<span class="button year" onclick="selectYear(2);">2020</span>
+										</div>
 									</section>
 								<!-- Portfolio -->
 									<section>
@@ -83,42 +90,42 @@
 										<div class="row">
 											<div class="col-4 col-6-medium col-12-small">
 												<section class="box">
-													<a href="analyzeamazon.html" class="image featured"><img src="images/AMZN.jpg" alt="" /></a>
+													<a class="image featured"><img src="images/AMZN.jpg" alt="" onclick="handleLink('analyzeamazon.html')"/></a>
 													<header>
 														<h3>Amazon</h3>
 													</header>
 													<p>Handles online purchases only.</p>
 													<footer>
 														<ul class="actions">
-															<li><a href="analyzeamazon.html" class="button alt">Analyze my spending</a></li>
+															<li><a onclick="handleLink('analyzeamazon.html')" class="button alt">Analyze my spending</a></li>
 														</ul>
 													</footer>
 												</section>
 											</div>
 											<div class="col-4 col-6-medium col-12-small">
 												<section class="box">
-													<a href="analyzewalmart.html" class="image featured"><img src="images/WM.jpg" alt="" /></a>
+													<a onclick="handleLink('analyzewalmart.html')" class="image featured"><img src="images/WM.jpg" alt="" /></a>
 													<header>
 														<h3>Walmart</h3>
 													</header>
 													<p>Handles online purchases only.</p>
 													<footer>
 														<ul class="actions">
-															<li><a href="analyzewalmart.html" class="button alt">Analyze my spending</a></li>
+															<li><a onclick="handleLink('analyzewalmart.html')" class="button alt">Analyze my spending</a></li>
 														</ul>
 													</footer>
 												</section>
 											</div>
 											<div class="col-4 col-6-medium col-12-small">
 												<section class="box">
-													<a href="analyzeacostco.html" class="image featured"><img src="images/COST.png" alt="" /></a>
+													<a onclick="handleLink('analyzecostco.html')" class="image featured"><img src="images/COST.png" alt="" /></a>
 													<header>
 														<h3>Costco</h3>
 													</header>
 													<p>Handles online & warehouse purchases.</p>
 													<footer>
 														<ul class="actions">
-															<li><a href="analyzeacostco.html" class="button alt">Analyze my spending</a></li>
+															<li><a onclick="handleLink('analyzecostco.html')" class="button alt">Analyze my spending</a></li>
 														</ul>
 													</footer>
 												</section>
@@ -337,12 +344,29 @@
 		</div>
 
 		<!-- Scripts -->
+		var selectedYear = 1;
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.dropotron.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				function selectYear(idx) {
+					let yearElements = document.querySelectorAll(".button.year");
+					for(let i=0; i<3; i++) {
+						if (idx == i) {
+							yearElements[i].className = "button year selected";
+						} else {
+							yearElements[i].className = "button year";
+						}
+					}
+					selectedYear = idx;
+				}
 
+				function handleLink(url) {
+					window.location.href = url + "?selection=" + selectedYear;
+				}
+			</script>
 	</body>
 </html>
