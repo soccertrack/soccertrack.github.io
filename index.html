@@ -90,42 +90,42 @@
 										<div class="row">
 											<div class="col-4 col-6-medium col-12-small">
 												<section class="box">
-													<a class="image featured"><img src="images/AMZN.jpg" alt="" onclick="handleLink('analyzeamazon.html')"/></a>
+													<a class="image featured"><img src="images/AMZN.jpg" alt="" onclick="handleLink('analyze.html?merchant=amazon&img=AMZN.jpg')"/></a>
 													<header>
 														<h3>Amazon</h3>
 													</header>
 													<p>Handles online purchases only.</p>
 													<footer>
 														<ul class="actions">
-															<li><a onclick="handleLink('analyzeamazon.html')" class="button alt">Analyze my spending</a></li>
+															<li><a onclick="handleLink('analyze.html?merchant=amazon&img=AMZN.jpg')" class="button alt">Analyze my spending</a></li>
 														</ul>
 													</footer>
 												</section>
 											</div>
 											<div class="col-4 col-6-medium col-12-small">
 												<section class="box">
-													<a onclick="handleLink('analyzewalmart.html')" class="image featured"><img src="images/WM.jpg" alt="" /></a>
+													<a onclick="handleLink('analyze.html?merchant=walmart&img=WM.jpg')" class="image featured"><img src="images/WM.jpg" alt="" /></a>
 													<header>
 														<h3>Walmart</h3>
 													</header>
 													<p>Handles online purchases only.</p>
 													<footer>
 														<ul class="actions">
-															<li><a onclick="handleLink('analyzewalmart.html')" class="button alt">Analyze my spending</a></li>
+															<li><a onclick="handleLink('analyze.html?merchant=walmart&img=WM.jpg')" class="button alt">Analyze my spending</a></li>
 														</ul>
 													</footer>
 												</section>
 											</div>
 											<div class="col-4 col-6-medium col-12-small">
 												<section class="box">
-													<a onclick="handleLink('analyzecostco.html')" class="image featured"><img src="images/COST.png" alt="" /></a>
+													<a onclick="handleLink('analyze.html?merchant=costco&img=COST.png')" class="image featured"><img src="images/COST.png" alt="" /></a>
 													<header>
 														<h3>Costco</h3>
 													</header>
 													<p>Handles online & warehouse purchases.</p>
 													<footer>
 														<ul class="actions">
-															<li><a onclick="handleLink('analyzecostco.html')" class="button alt">Analyze my spending</a></li>
+															<li><a onclick="handleLink('analyze.html?merchant=costco&img=COST.png')" class="button alt">Analyze my spending</a></li>
 														</ul>
 													</footer>
 												</section>
@@ -160,14 +160,14 @@
 											</div>
 											<div class="col-4 col-6-medium col-12-small">
 												<section class="box">
-													<a href="#" class="image featured"><img src="images/HD.png" alt="" /></a>
+													<a onclick="handlelink('analyze.html?merchant=homedepot&img=HD.png')" class="image featured"><img src="images/HD.png" alt="" /></a>
 													<header>
 														<h3>Home Depot</h3>
 													</header>
 													<p>Handles online purchases only.</p>
 													<footer>
 														<ul class="actions">
-															<li><a href="#" class="button alt">Analyze my spending</a></li>
+															<li><a onclick="handlelink('analyze.html?merchant=homedepot&img=HD.png')" class="button alt">Analyze my spending</a></li>
 														</ul>
 													</footer>
 												</section>
@@ -366,7 +366,7 @@
 				}
 
 				function handleLink(url) {
-					window.location.href = url + "?selection=" + selectedYear;
+					window.location.href = url + "&selection=" + selectedYear;
 				}
 			</script>
 	</body>
