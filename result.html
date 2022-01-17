@@ -213,7 +213,6 @@
 						let num = dataSet2.data.datasets[0].data[i];
 						quantities[i].innerText = num;
 						unitTotal += num;
-
 					}
 
 					const amounts = document.getElementsByClassName("OrderAmount");
@@ -240,14 +239,14 @@
 						let row = item.date.replace(',', ' ') + ",'" + item.order + "'," + item.type + "," + item.subTotalAmt + "," + item.taxTotalAmt + "," + item.orderUrl + "\n";
 						content += row;
 					});
-					console.log(content);
 					let link = document.getElementById("csvDownload");
 					link.setAttribute("href", encodeURI(content));
 					link.setAttribute("download", "data.csv");
-					
 				}
 
 				document.addEventListener('resultEvent', function (e) {
+					console.log(JSON.stringify(e.detail));
+
 					let data = e.detail;
 					let summary = data[0];
 					let details = data[1];
