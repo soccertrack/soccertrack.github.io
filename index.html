@@ -10,7 +10,7 @@
 		</style>
 	</head>
 	<body class="homepage is-preload">
-		<div id="page-wrapper" onload="load">
+		<div id="page-wrapper">
 
 			<!-- Header -->
 				<section id="header" >
@@ -307,10 +307,8 @@
 					return !isBrave;
 				}
 				
-				function load() {
-					if (!isSupported()) {
-						document.getElementById('errorMsg').style.display = 'block';
-					}
+				if (!isSupported()) {
+					document.getElementById('errorMsg').style.display = 'block';
 				}
 			</script>
 			<script>
