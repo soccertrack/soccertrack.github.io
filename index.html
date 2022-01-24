@@ -14,16 +14,12 @@
 
 			<!-- Header -->
 				<section id="header" >
-
-					<!-- Logo -->
-						<h1><a href="index.html">TrackSpendR</a></h1>
-
-
 					<!-- Banner -->
 						<section id="banner">
 							<header>
 								<h2>What is TrackSpendR?</h2>
 								<p style="color: white;">A financial tool to track your online spending, sales tax and spending trend across top e-commerce sites.</p>
+								<p id="errorMsg" style="color: red;display:none;">Your browser is currently not supported. Please use Google Chrome browser.</p>
 							</header>
 						</section>
 
@@ -321,7 +317,20 @@
 				}
 
 				function handleLink(url) {
-					window.location.href = url + "&selection=" + selectedYear;
+					if (isSupported()) {
+						window.location.href = url + "&selection=" + selectedYear;
+					} else {
+						alert('Your browser is currently not supported, please use Google Chrome browser.');
+					}	
+				}
+
+				function isSupported() {
+					let isBrave = (navigator.brave && await navigator.brave.isBrave() || false);
+					return !isBrave;
+				}
+
+				if (!isSupported()) {
+					document.getElementById('errorMsg').style.display = 'block';
 				}
 			</script>
 	</body>
