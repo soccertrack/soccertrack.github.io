@@ -10,7 +10,7 @@
 		</style>
 	</head>
 	<body class="homepage is-preload">
-		<div id="page-wrapper">
+		<div id="page-wrapper" onload="load">
 
 			<!-- Header -->
 				<section id="header" >
@@ -302,6 +302,19 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 			<script>
+				async function isSupported() {
+					var isBrave = navigator.brave;
+					
+					return !isBrave;
+				}
+				
+				function load() {
+					if (!isSupported()) {
+						document.getElementById('errorMsg').style.display = 'block';
+					}
+				}
+			</script>
+			<script>
 				var selectedYear = 2021;
 
 				function selectYear(idx) {
@@ -322,15 +335,6 @@
 					} else {
 						alert('Your browser is currently not supported, please use Google Chrome browser.');
 					}	
-				}
-
-				function isSupported() {
-					let isBrave = (navigator.brave && await navigator.brave.isBrave() || false);
-					return !isBrave;
-				}
-
-				if (!isSupported()) {
-					document.getElementById('errorMsg').style.display = 'block';
 				}
 			</script>
 	</body>
