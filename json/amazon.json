@@ -1,0 +1,17 @@
+{
+    "LoginPage": "https://www.amazon.com/ap/signin",
+    "ResultDisplayUrl": "https://www.trackspendr.com/result.html?merchant=Amazon&img=AMZN.jpg&year=",
+    "TransactionUrl": "https://www.amazon.com/cpe/yourpayments/transactions",
+    "BootStrapUrl": "https://www.trackspendr.com/analyze.html?merchant=amazon",
+    "DigitalDetailUrlPrefix": "https://www.amazon.com/gp/digital/your-account/order-summary.html/ref=ppx_yo_dt_b_dor_o00?ie=UTF8&orderID=",
+    "OnlineDetailUrlPrefix": "https://www.amazon.com/gp/your-account/order-details/ref=_or?ie=UTF8&orderID=",
+    "SummaryListSelector": "span.a-color-secondary.value",
+    "SignInAnchorId": "continue",
+    "AlternateSignInAnchorId": "signInSubmit",
+    "DigitalDetailSectionSelector": ".a-column.a-span4.a-text-right.a-span-last",
+    "OnlineDetailSectionSelector": "#od-subtotals",
+    "SubTotalAmtBefore": "Totalbeforetax:\n\n\n\n\n",
+    "SubTotalAmtAfter": "\n",
+    "SalesTaxBefore": "Estimatedtaxtobecollected:\n\n\n\n\n",
+    "SalesTaxAfter": "\n"
+}
