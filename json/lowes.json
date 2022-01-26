@@ -1,13 +1,13 @@
 {
-        "LoginPage": "https://www.lowes.com/mylowes/orders/checkorderstatus",
-        "LoginRedirectPage": "https://www.lowes.com/u/login/oauth2/authorize?redirect_uri=https%3A%2F%2Fwww.lowes.com%2Fu%2Flogin%2Foauth2%2Fpostauthorize&scope=general-digital-access&client_id=loweswebclient&state=Uk5GTnE2amQxcnRpV1hwNnlzbDdLcGwwVUVzQ3JyT21LT2ZzY0dRM25YQVROeTA0Tmo1QW5XUFNFWVRaYkZpQg%3D%3D&code_challenge=9Q_ULtvHeLU3mTcpINC6fDmjAjZ2ge2fQMfowoGSYhI&code_challenge_method=S256&redirect=/mylowes/orders?orderType=BOTH%26show=all",
-        "ResultDisplayUrl": "https://www.trackspendr.com/result.html?merchant=Lowes&img=lowes.png&year=",
-        "TransactionUrl": "https://www.lowes.com/mylowes/orders?orderType=BOTH&show=all",
-        "BootStrapUrl": "https://www.trackspendr.com/analyze.html?merchant=lowes",
-        "SignInAnchorSelector": ".Heading__Wrapper-RC__sc-t2qoqq-0",
-        "DetailUrlButtonSelector": "a.order-details-button",
-        "OrderIdSelector": ".kChfMH.order-list-price-number",
-        "DateSelector": ".styles__H2-sc-1et633v-1",
-        "NextButtonSelector": "button.pagination-item.type--next",
-        "ItemsSelector": ".styles__ParagraphRegular-wzr4hf-0.cOTrCb.typography.variant--body_medium.align--right.margin-none.medium"
+    "LoginPage": "https://www.lowes.com/mylowes/orders/checkorderstatus",
+    "LoginRedirectPage": "https://www.lowes.com/u/login/oauth2/authorize?redirect_uri=https%3A%2F%2Fwww.lowes.com%2Fu%2Flogin%2Foauth2%2Fpostauthorize&scope=general-digital-access&client_id=loweswebclient&state=Uk5GTnE2amQxcnRpV1hwNnlzbDdLcGwwVUVzQ3JyT21LT2ZzY0dRM25YQVROeTA0Tmo1QW5XUFNFWVRaYkZpQg%3D%3D&code_challenge=9Q_ULtvHeLU3mTcpINC6fDmjAjZ2ge2fQMfowoGSYhI&code_challenge_method=S256&redirect=/mylowes/orders?orderType=BOTH%26show=all",
+    "ResultDisplayUrl": "https://www.trackspendr.com/result.html?merchant=Lowes&img=lowes.png&year=",
+    "TransactionUrl": "https://www.lowes.com/mylowes/orders?orderType=BOTH&show=all",
+    "BootStrapUrl": "https://www.trackspendr.com/analyze.html?merchant=lowes",
+    "SignInAnchorSelector": ".Heading__Wrapper-RC__sc-t2qoqq-0",
+    "DetailUrlButtonSelector": "a.order-details-button",
+    "OrderIdSelector": ".kChfMH.order-list-price-number",
+    "DateSelector": ".styles__H2-sc-1et633v-1",
+    "NextButtonSelector": "button.pagination-item.type--next",
+    "ItemsSelector": ".styles__ParagraphRegular-wzr4hf-0.cOTrCb.typography.variant--body_medium.align--right.margin-none.medium"
 }
