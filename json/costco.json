@@ -1,0 +1,23 @@
+{
+    "LoginPage": "https://signin.costco.com",
+    "ResultDisplayUrl": "https://www.trackspendr.com/result.html?merchant=Costco&img=COST.png&&year=",
+    "TransactionUrl": "https://www.costco.com/OrderStatusCmd",
+    "BootStrapUrl": "https://www.trackspendr.com/analyze.html?merchant=costco",
+    "DetailUrlPrefix":  "https://www.costco.com/OrderStatusDetailsView?orderId=",
+    "TransactionUrlPrefix": "https://www.costco.com/OrderStatusCmd?fromYear=",
+    "OrderListSelector": ".order-number.body-copy.link",
+    "CloseButtonSelector": ".sc-bdvvtL.kSjIOz.sc-iUKqMP.huokfg",
+    "ReceiptBodySelector": ".sc-gWXbKe.cUfCod",
+    "NextButtonsSelector": ".MuiButtonBase-root.MuiPaginationItem-root.MuiPaginationItem-page.MuiPaginationItem-rounded.MuiPaginationItem-textPrimary.MuiPaginationItem-sizeSmall",
+    "ReceiptDatesSelector": ".sc-bdvvtL.iELQH>div:nth-child(2)",
+    "ReceiptButtonsSelector": ".sc-bdvvtL.kSjIOz.sc-jObWnj.dHgVGy",
+    "DetailOrderDateSelector": "div[automation-id='orderDate']",
+    "YearSelectionId": "Showing",
+    "WareHouseCloseButtonId": "warehouseOrdersTab",
+    "DetailSubTotalInBetween": ["Items)","Ship"],
+    "DetailTaxTotalInBetween": ["Tax","OrderTotal"],
+    "CheckoutBodySelector": ".checkout-container-body",
+    "SignInAnchorId": "signInHeader",
+    "SubTotalInBetween": ["SUBTOTAL","TAX"],
+    "TaxTotalInBetween": ["TAX","****TOTAL"]
+}
