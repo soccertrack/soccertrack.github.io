@@ -1,0 +1,15 @@
+{
+    "LoginPage": "https://www.homedepot.com/auth/view/signin",
+    "ResultDisplayUrl": "https://www.trackspendr.com/result.html?merchant=HomeDepot&img=HD.png&year=",
+    "TransactionUrl": "https://www.homedepot.com/order/view/summary",
+    "BootStrapUrl": "https://www.trackspendr.com/analyze.html?merchant=homedepot&img=HD.png",
+    "SigninAnchorSelector": "p[data-automation-id='signInHeader']",
+    "ChangeSelectId": "orderSummaryDateFilter",
+    "ChangeSelectValue": "All time",
+    "AccordiansSelector": ".accordion__plus.order-header__plus",
+    "OrderIdSelector": "h6[data-automation-id='orderHeaderOrderNumberValue']",
+    "DateSelector": "h6[data-automation-id='orderHeaderDateOrderedValue']",
+    "PageHolderSelector": "ul[data-automation-id='authOrderPagination']",
+    "SubTotalContainerSelector": "span[data-automation-id='orderFooterPaymentDetailsSubtotalValue']",
+    "SalesTaxContainerSelector": "span[data-automation-id='orderFooterPaymentDetailsSalesTaxValue']"
+}
