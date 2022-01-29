@@ -56,7 +56,7 @@
 							</div>
 							<footer>
 								<ul class="actions">
-									<li><a href="#" class="button large">Get Started</a></li>
+									<li><a href="#" class="button large">Download TrackSpendR Extension to begin</a></li>
 								</ul>
 							</footer>
 						</section>
@@ -306,6 +306,10 @@
 					var isBrave = navigator.brave;
 					return !isBrave;
 				}
+
+				function hasChromeExtensionInstalled() {
+					return document.querySelector('.button.large').style.display == 'none';
+				}
 				
 				if (!isSupported()) {
 					document.getElementById('errorMsg').style.display = 'block';
@@ -327,10 +331,10 @@
 				}
 
 				function handleLink(url) {
-					if (isSupported()) {
+					if (isSupported() && hasChromeExtensionInstalled()) {
 						window.location.href = url + "&selection=" + selectedYear;
 					} else {
-						alert('Your browser is currently not supported, please use Google Chrome browser.');
+						alert('Please download chrome extension above to continue.');
 					}	
 				}
 			</script>
