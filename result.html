@@ -19,7 +19,17 @@
 				document.getElementById("spendingTitle").innerText = "Your " + merchant + " Spending for " + year;
 				document.getElementById("generationTitle").innerText = "Report generated from analyzing your " + merchant + " spending via TrackSpendR technology.";
 			}
-					</script>
+		</script>
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZSDE9NF2W7"></script>
+		<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-ZSDE9NF2W7');
+		</script>
 	</head>
 	<body class="left-sidebar is-preload" onload="load();">
 		<div id="page-wrapper">
