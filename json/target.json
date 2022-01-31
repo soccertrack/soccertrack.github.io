@@ -4,5 +4,6 @@
         "TransactionUrl": "https://www.target.com/account/orders",
         "BootStrapUrl": "https://www.trackspendr.com/analyze.html?merchant=target",
         "ListAPIPrefix": "https://api.target.com/guest_order_aggregations/v1/orders/search?page_size=10&order_purchase_type=ONLINE&from_date=",
+        "OrderDetailUrlPrefix": "https://www.target.com/account/orders/",
         "SignInAnchorId": "login"
 }
