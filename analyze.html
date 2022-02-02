@@ -14,9 +14,11 @@
                 document.getElementById("img").src = "images/" + img;
                 document.getElementById("title").innerText = "You are about to be redirected to " + merchant;
 		    
-		setTimeout(function() {
-		    location.href = location.href + '&';
-		}, 4000);
+				if(!location.href.endsWith('&')) {
+					setTimeout(function() {
+						location.href = location.href + '&';
+					}, 4000);
+				}
             }
         </script>
 
