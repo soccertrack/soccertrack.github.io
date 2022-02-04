@@ -3,6 +3,8 @@
     "ResultDisplayUrl": "https://www.trackspendr.com/result.html?merchant=HomeDepot&img=HD.png&year=",
     "TransactionUrl": "https://www.homedepot.com/order/view/summary",
     "BootStrapUrl": "https://www.trackspendr.com/analyze.html?merchant=homedepot&img=HD.png",
+    "OrderHistoryUrl": "https://www.homedepot.com/customer/order/v1/orderhistory",
+    "OrderDetailUrlPrefix": "https://www.homedepot.com/customer/order/v1/orderdetailsgroup/",
     "SigninAnchorSelector": "p[data-automation-id='signInHeader']",
     "ChangeSelectId": "orderSummaryDateFilter",
     "ChangeSelectValue": "All time",
