@@ -160,12 +160,50 @@
 				});	
 
 				setTimeout(function() {
-					download('generated_area');
+					switch(share_option) {
+						case 0: 
+							download('generated_area');
+							break;
+						case 1:
+							getLink('generated_area');
+							break;
+						case 2:
+							shareToFacebook('generated_area');
+							break;
+						case 3:
+							break;
+					}
+					
+					setTimeout(function() {
+						document.getElementById('generated_area').style.display = 'none';
+						target.innerHTML = '';
+
+						dfSet.clear();
+						gkSet.clear();
+						mfSet.clear();
+						fwSet.clear();
+
+						let checkMarks = document.querySelectorAll(".checkmark");
+						checkMarks.forEach(e => {
+							e.style.opacity = 0.0;
+						});
+					}, 1000);
 				}, 1000);
+
 			}
 
 			function scrollToElement(elementName) {
 				document.getElementById(elementName).scrollIntoView( { behavior: 'smooth'});
+			}
+
+			var share_option = 0;
+			function handleShareOption(idx) {
+				let allShares = document.querySelectorAll('.share');
+				allShares.forEach(e => {
+					e.style.opacity = 0;
+				});
+				allShares[idx].style.opacity = 1;
+				share_option = idx;
 			}
 		</script>
 	</head>
@@ -173,6 +211,43 @@
 
 
 		<!-- Work -->
+		<article id="share" class="wrapper style2">
+			<div class="container">
+				<header>
+					<h2>How do you want to share your team? Pick one.</h2>
+				</header>
+				<div class="row aln-center">
+					<div class="col-4 col-6-medium col-12-small" onclick="handleShareOption(0)">
+						<section class="box style1">
+							<span class="fas fa-download" style="width:50px;"></span>
+							<h3>Download PNG</h3>
+							<img src="assets/checkmark.png" class="checkmark share" width="20" height="20" style="opacity: 1;margin-left: 10px;"/>
+						</section>
+					</div>
+					<div class="col-4 col-6-medium col-12-small" onclick="handleShareOption(1)">
+						<section class="box style1">
+							<span class="fas fa-link"></span>
+							<h3>Get sharable URL link</h3>
+							<img src="assets/checkmark.png" class="checkmark share" width="20" height="20" style="opacity: 0;margin-left: 10px;"/>
+						</section>
+					</div>
+					<div class="col-4 col-6-medium col-12-small" onclick="handleShareOption(2)">
+						<section class="box style1">
+							<span class="icon brands fa-twitter"></span>
+							<h3>Share to facebook</h3>
+							<img src="assets/checkmark.png" class="checkmark share" width="20" height="20" style="opacity: 0;margin-left: 10px;"/>
+						</section>
+					</div>
+					<div class="col-4 col-6-medium col-12-small" onclick="handleShareOption(3)">
+						<section class="box style1">
+							<span class="icon brands fa-facebook-f "></span>
+							<h3>Share to twitter</h3>
+							<img src="assets/checkmark.png" class="checkmark share" width="20" height="20" style="opacity: 0;margin-left: 10px;"/>
+						</section>
+					</div>
+				</div>
+			</div>
+		</article>
 			<article id="work" class="wrapper style2">
 				<div class="container">
 					<header>
@@ -181,17 +256,17 @@
 					<div class="row aln-center">
 						<div class="col-4 col-6-medium col-12-small">
 							<section class="box style1">
-								<span class="icon featured fa-comments"></span>
+								<span class="icon solid featured fa-camera-retro"></span>
 								<h3>Pick your team formation. Pick your starting 11 players.</h3>
 								<p>This is your dream team to start a game.</p>
-								<a href="#portfolio" class="button large scrolly">Pick 11</a>
+								<a href="#portfolio" class="button large scrolly">Pick Team</a>
 							</section>
 						</div>
 						<div class="col-4 col-6-medium col-12-small">
 							<section class="box style1">
 								<span class="icon solid featured fa-camera-retro"></span>
 								<h3>Pick your team roster. 23 players plus 3 stand-by.</h3>
-								<p>This is your <strong>USMNT</strong> team going to WCQ or Qatar.</p>
+								<p>This is your <strong>USMNT</strong> team going to WC.</p>
 								<a onclick="scrollToElement('gk_instruction');" class="button large scrolly">Pick Roster</a>
 							</section>
 						</div>
@@ -210,7 +285,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleGK(0);"  id="pickkeeper">
 								<span class="image featured"><img src="players/BillHamid.jpg" alt="Bill Hamid" /></span>
-								Goalkeeper<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left: 10px;"/>
+								Goalkeeper<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left: 10px;"/>
 								<h3>Bill Hamid</h3>
 								<p><img src="flags/usa.png" class="flag"/>DC United</p>
 							</article>
@@ -218,7 +293,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleGK(1);">
 								<span class="image featured"><img src="players/EthanHorvath.jpg" alt="Ethan Horvath" /></span>
-								Goalkeeper<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left: 10px;"/>
+								Goalkeeper<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left: 10px;"/>
 								<h3>Ethan Horvath</h3>
 								<p><img src="flags/england.png" class="flag"/>Nottingham Forest</p>
 							</article>
@@ -226,7 +301,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleGK(2);">
 								<span class="image featured"><img src="players/GabrielSloninia.png" alt="Gabriel Sloninia" /></span>
-								Goalkeeper<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left: 10px;"/>
+								Goalkeeper<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left: 10px;"/>
 								<h3>Gabriel Sloninia</h3>
 								<p><img src="flags/usa.png" class="flag"/>Chicago Fire</p>
 							</article>
@@ -234,7 +309,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleGK(3);">
 								<span class="image featured"><img src="players/MattTurner.jpg" alt="Matt Turner" /></span>
-								Goalkeeper<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left: 10px;"/>
+								Goalkeeper<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left: 10px;"/>
 								<h3>Matt Turner</h3>
 								<p><img src="flags/england.png" class="flag"/>Arsenal</p>
 							</article>
@@ -242,7 +317,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleGK(4);">
 								<span class="image featured"><img src="players/SeanJohnson.jpg" alt="Sean Johnson" /></span>
-								Goalkeeper<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left: 10px;"/>
+								Goalkeeper<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left: 10px;"/>
 								<h3>Sean Johnson</h3>
 								<p><img src="flags/usa.png" class="flag"/>NYC FC</p>
 							</article>
@@ -251,7 +326,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleGK(5);">
 								<span class="image featured"><img src="players/ZackSteffen.jpg" alt="Zack Steffen" /></span>
-								Goalkeeper<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left: 10px;"/>
+								Goalkeeper<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left: 10px;"/>
 								<h3>Zack Steffen</h3>
 								<p><img src="flags/england.png" class="flag"/>Manchester City</p>
 							</article>
@@ -271,7 +346,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleDf(0);">
 								<span class="image featured"><img src="players/AaronLong.jpg" alt="Aaron Long" /></span>
-								center back<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								center back<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Aaron Long</h3>
 								<p><img src="flags/usa.png" class="flag"/>NY Red Bulls</p>
 							</article>
@@ -279,7 +354,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleDf(1);">
 								<span class="image featured"><img src="players/ChrisRichards.jpg" alt="Chris Richards" /></span>
-								center back<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								center back<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Chris Richards</h3>
 								<p><img src="flags/germany.png" class="flag"/>1899 Hoffenheim</p>
 							</article>
@@ -287,7 +362,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleDf(2);">
 								<span class="image featured"><img src="players/JamesSands.jpg" alt="James Sands" /></span>
-								center back<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								center back<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>James Sands</h3>
 								<p><img src="flags/scotland.png" class="flag"/>Rangers FC</p>
 							</article>
@@ -295,7 +370,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleDf(3);">
 								<span class="image featured"><img src="players/JohnBrooks.jpg" alt="John Brooks" /></span>
-								center back<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								center back<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>John Brooks</h3>
 								<p><img src="flags/germany.png" class="flag"/>Wolfsburg FC</p>
 							</article>
@@ -303,7 +378,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleDf(4);">
 								<span class="image featured"><img src="players/MarkMcKenzie.jpg" alt="Mark McKenzie" /></span>
-								center back<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								center back<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Mark McKenzie</h3>
 								<p><img src="flags/belgium.png" class="flag"/>Genk</p>
 							</article>
@@ -311,7 +386,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleDf(5);">
 								<span class="image featured"><img src="players/MattMiazga.jpg" alt="Matt Miazga" /></span>
-								center back<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								center back<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Matt Miazga</h3>
 								<p><img src="flags/spain.png" class="flag"/>Deportivo Alavés</p>
 							</article>
@@ -319,7 +394,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleDf(6);">
 								<span class="image featured"><img src="players/MilesRobinson.jpg" alt="Miles Robinson" /></span>
-								center back<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								center back<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Miles Robinson</h3>
 								<p><img src="flags/usa.png" class="flag"/>Atlanta FC</p>
 							</article>
@@ -327,7 +402,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleDf(7);">
 								<span class="image featured"><img src="players/TimReam.jpg" alt="Tim Ream" /></span>
-								center back | left back<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								center back<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Tim Ream</h3>
 								<p><img src="flags/england.png" class="flag"/>Fulham FC</p>
 							</article>
@@ -335,7 +410,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleDf(8);">
 								<span class="image featured"><img src="players/WalkerZimmerman.jpg" alt="Walker Zimmerman" /></span>
-								center back<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								center back<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Walker Zimmerman</h3>
 								<p><img src="flags/usa.png" class="flag"/>Nashville SC</p>
 							</article>
@@ -343,7 +418,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleDf(9);">
 								<span class="image featured"><img src="players/AntoneeRobinson.jpg" alt="Antonee Robinson" /></span>
-								left back<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								left back<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Antonee Robinson</h3>
 								<p><img src="flags/england.png" class="flag"/>Fulham FC</p>
 							</article>
@@ -353,7 +428,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleDf(10);">
 								<span class="image featured"><img src="players/DeAndreYedlin.jpg" alt="DeAndre Yedlin" /></span>
-								right back<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								right back<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>DeAndre Yedlin</h3>
 								<p><img src="flags/turkey.png" class="flag"/>Galatasaray</p>
 							</article>
@@ -362,7 +437,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleDf(11);">
 								<span class="image featured"><img src="players/GeorgeBello.jpg" alt="George Bello" /></span>
-								left back<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								left back<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>George Bello</h3>
 								<p><img src="flags/germany.png" class="flag"/>Arminia Bielefeld</p>
 							</article>
@@ -371,7 +446,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleDf(12);">
 								<span class="image featured"><img src="players/JoeScally.jpg" alt="Joe Scally" /></span>
-								left back | right back<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								left | right back<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Joe Scally</h3>
 								<p><img src="flags/germany.png" class="flag"/>Borussia M'bach</p>
 							</article>
@@ -380,7 +455,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleDf(13);">
 								<span class="image featured"><img src="players/ReggieCannon.jpg" alt="Reggie Cannon" /></span>
-								right back<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								right back<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Reggie Cannon</h3>
 								<p><img src="flags/portugal.png" class="flag"/>Boavista</p>
 							</article>
@@ -388,7 +463,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleDf(14);">
 								<span class="image featured"><img src="players/SamVines.jpg" alt="Sam Vines" /></span>
-								left back<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								left back<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Sam Vines</h3>
 								<p><img src="flags/belgium.png" class="flag"/>Royal Antwerp FC</p>
 							</article>
@@ -396,7 +471,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleDf(15);">
 								<span class="image featured"><img src="players/SerginoDest.jpg" alt="Sergino Dest" /></span>
-								right back | left back<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								right | left back<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Sergino Dest</h3>
 								<p><img src="flags/spain.png" class="flag"/>FC Barcelona</p>
 							</article>
@@ -404,7 +479,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleDf(16);">
 								<span class="image featured"><img src="players/ShaqMoore.jpg" alt="Shaq Moore" /></span>
-								right back<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								right back<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Shaq Moore</h3>
 								<p><img src="flags/spain.png" class="flag"/>CD Tenerife</p>
 							</article>
@@ -424,7 +499,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleMf(0);">
 								<span class="image featured"><img src="players/CristianRoldan.jpg" alt="Cristian Roldan" /></span>
-								midfield<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								midfield<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Cristian Roldan</h3>
 								<p><img src="flags/usa.png" class="flag"/>Seattle Sounders FC</p>
 							</article>
@@ -432,7 +507,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleMf(1);">
 								<span class="image featured"><img src="players/ErykWilliamson.jpg" alt="Eryk Williamson" /></span>
-								midfield<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								midfield<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Eryk Williamson</h3>
 								<p><img src="flags/usa.png" class="flag"/>Portland Timbers FC</p>
 							</article>
@@ -440,7 +515,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleMf(2);">
 								<span class="image featured"><img src="players/GianlucaBusio.jpg" alt="Gianluca Busio" /></span>
-								midfield | midfield<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								midfield<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Gianluca Busio</h3>
 								<p><img src="flags/italy.png" class="flag"/>Venezia FC</p>
 							</article>
@@ -448,7 +523,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleMf(3);">
 								<span class="image featured"><img src="players/GiovanniReyna.jpg" alt="Giovanni Reyna" /></span>
-								midfield | right wing<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								midfield | right wing<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Giovanni Reyna</h3>
 								<p><img src="flags/germany.png" class="flag"/>Borussia Dortmund</p>
 							</article>
@@ -456,15 +531,15 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleMf(4);">
 								<span class="image featured"><img src="players/JacksonYueill.jpg" alt="Jackson Yueill" /></span>
-								midfield<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								midfield<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Jackson Yueill</h3>
-								<p><img src="flags/usa.png" class="flag"/>San Jose Earthquakes</p>
+								<p><img src="flags/usa.png" class="flag"/>SJ Earthquakes</p>
 							</article>
 						</div>
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleMf(5);">
 								<span class="image featured"><img src="players/KellynAcosta.jpg" alt="Kellyn Acosta" /></span>
-								midfield<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								midfield<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Kellyn Acosta</h3>
 								<p><img src="flags/usa.png" class="flag"/>LA FC</p>
 							</article>
@@ -472,7 +547,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleMf(6);">
 								<span class="image featured"><img src="players/LucadelaTorre.jpg" alt="Luca de la Torre" /></span>
-								midfield<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								midfield<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Luca de la Torre</h3>
 								<p><img src="flags/netherland.png" class="flag"/>Heracle FC</p>
 							</article>
@@ -480,7 +555,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleMf(7);">
 								<span class="image featured"><img src="players/RichardLedezma.jpeg" alt="Richard Ledezma" /></span>
-								midfield<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								midfield<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Richard Ledezma</h3>
 								<p><img src="flags/netherland.png" class="flag"/>PSV</p>
 							</article>
@@ -488,7 +563,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleMf(8);">
 								<span class="image featured"><img src="players/SebastianLletget.jpg" alt="Sebastian Lletget" /></span>
-								midfield<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								midfield<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Sebastian Lletget</h3>
 								<p><img src="flags/usa.png" class="flag"/>LA Galaxy</p>
 							</article>
@@ -496,7 +571,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleMf(9);">
 								<span class="image featured"><img src="players/TylerAdams.jpg" alt="Tyler Adams" /></span>
-								midfield<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								midfield<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Tyler Adams</h3>
 								<p><img src="flags/germany.png" class="flag"/>RB Leipzig</p>
 							</article>
@@ -504,7 +579,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleMf(10);">
 								<span class="image featured"><img src="players/WestonMcKennie.jpg" alt="Weston McKennie" /></span>
-								midfield<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								midfield<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Weston McKennies</h3>
 								<p><img src="flags/italy.png" class="flag"/>Juventus</p>
 							</article>
@@ -512,7 +587,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleMf(11);">
 								<span class="image featured"><img src="players/YunusMusah.jpg" alt="Yunus Musah" /></span>
-								midfield<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								midfield<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Yunus Musah</h3>
 								<p><img src="flags/spain.png" class="flag"/>Valencia</p>
 							</article>
@@ -531,7 +606,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleFw(0);">
 								<span class="image featured"><img src="players/BrendenAaronson.jpg" alt="Brenden Aaronson" /></span>
-								left wing | right wing<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								left | right wing<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Brenden Aaronson</h3>
 								<p><img src="flags/austria.png" class="flag"/>RB Salzburg</p>
 							</article>
@@ -539,7 +614,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleFw(1);">
 								<span class="image featured"><img src="players/ChristianPulisic.jpg" alt="Christian Pulisic" /></span>
-								left wing | forward<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								left wing | forward<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Christian Pulisic</h3>
 								<p><img src="flags/england.png" class="flag"/>Chelsea</p>
 							</article>
@@ -547,15 +622,15 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleFw(2);">
 								<span class="image featured"><img src="players/DarylDike.jpg" alt="Daryl Dike" /></span>
-								forward<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								forward<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Daryl Dike</h3>
-								<p><img src="flags/england.png" class="flag"/>West Bromwich Albion</p>
+								<p><img src="flags/england.png" class="flag"/>West Brom</p>
 							</article>
 						</div>
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleFw(3);">
 								<span class="image featured"><img src="players/GyasiZardes.jpg" alt="Gyasi Zardes" /></span>
-								forward<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								forward<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Gyasi Zardes</h3>
 								<p><img src="flags/usa.png" class="flag"/>Columbus Crew</p>
 							</article>
@@ -563,7 +638,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleFw(4);">
 								<span class="image featured"><img src="players/JesusFerreira.jpg" alt="Jesus Ferreira" /></span>
-								forward<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								forward<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Jesus Ferreiras</h3>
 								<p><img src="flags/usa.png" class="flag"/>FC Dallas</p>
 							</article>
@@ -571,7 +646,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleFw(5);">
 								<span class="image featured"><img src="players/JordanMorris.jpg" alt="Jordan Morris" /></span>
-								left wing | forward<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								left wing | forward<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Jordan Morris</h3>
 								<p><img src="flags/usa.png" class="flag"/>Seattle Sounders</p>
 							</article>
@@ -579,7 +654,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleFw(6);">
 								<span class="image featured"><img src="players/JordanPefok.jpg" alt="Jordan Pefok" /></span>
-								forward<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								forward<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Jordan Pefok</h3>
 								<p><img src="flags/switzerland.png" class="flag"/>Young Boys</p>
 							</article>
@@ -587,7 +662,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleFw(7);">
 								<span class="image featured"><img src="players/JoshSargent.jpg" alt="Josh Sargent" /></span>
-								forward | right wing<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								forward | right wing<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Josh Sargent</h3>
 								<p><img src="flags/england.png" class="flag"/>Norwich</p>
 							</article>
@@ -595,7 +670,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleFw(8);">
 								<span class="image featured"><img src="players/KonradDeLaFuente.jpg" alt="Konrad De La Fuente" /></span>
-								left wing<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								left wing<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Konrad De La Fuente</h3>
 								<p><img src="flags/france.png" class="flag"/>Marseille</p>
 							</article>
@@ -603,7 +678,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleFw(9);">
 								<span class="image featured"><img src="players/MatthewHoppe.jpg" alt="Matthew Hoppe" /></span>
-								left wing | forward<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								left wing | forward<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Matthew Hoppe</h3>
 								<p><img src="flags/spain.png" class="flag"/>RCD Mallorca</p>
 							</article>
@@ -611,7 +686,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleFw(10);">
 								<span class="image featured"><img src="players/NicholasGioacchini.jpg" alt="Nicholas Gioacchini" /></span>
-								right wing<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								right wing<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Nicholas Gioacchini</h3>
 								<p><img src="flags/france.png" class="flag"/>Montpellier</p>
 							</article>
@@ -619,7 +694,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleFw(11);">
 								<span class="image featured"><img src="players/PaulArriola.jpg" alt="Paul Arriola" /></span>
-								right wing<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								right wing<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Paul Arriola</h3>
 								<p><img src="flags/usa.png" class="flag"/>FC Dallas</p>
 							</article>
@@ -627,7 +702,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleFw(12);">
 								<span class="image featured"><img src="players/RichardoPepi.jpg" alt="Richardo Pepi" /></span>
-								forward<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								forward<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Richardo Pepi</h3>
 								<p><img src="flags/germany.png" class="flag"/>FC Augsburg</p>
 							</article>
@@ -635,7 +710,7 @@
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2" onclick="handleFw(13);">
 								<span class="image featured"><img src="players/TimothyWeah.jpg" alt="Timothy Weah" /></span>
-								right wing<img src="assets/checkmark.png" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								right wing<img src="assets/checkmark.png" class="checkmark" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
 								<h3>Timothy Weah</h3>
 								<p><img src="flags/france.png" class="flag"/>Lille</p>
 							</article>
@@ -647,7 +722,7 @@
 			<article class="wrapper style3" id="generated_area" style="display:none;">
 				<div class="container">
 					<header>
-						<h2>My USMNT Roster (23 + 3)</h2>
+						<img src="flags/usa.png" width="100" height="60"/><h2>My USMNT Roster (23 + 3)</h2>
 					</header>
 					<div class="row" id="roster_generated">
 					</div>

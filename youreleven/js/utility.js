@@ -1,18 +1,5 @@
 
     function download(elementName){
-        /*
-        html2canvas(document.getElementById(elementName), {useCORS:true}).then(function(canvas) {
-            let ctx = canvas.getContext('2d');
-            ctx.webkitImageSmoothingEnabled = true;
-            ctx.mozImageSmoothingEnabled = true;
-            ctx.imageSmoothingEnabled = true;
-
-            let aElement = document.createElement('a');
-            aElement.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-            aElement.download = 'myusmnt-roster.jpg';
-            aElement.click();
-            */
-        //});
         domtoimage.toJpeg(document.getElementById(elementName), { quality: 0.95 })
             .then(function (dataUrl) {
                 var link = document.createElement('a');
@@ -22,8 +9,8 @@
             });
     }
 
-    function getLink2() {
-        saveToImgur(function(url) {
+    function getLink2(elementName) {
+        saveToImgur(elementName, function(url) {
             navigator.clipboard.writeText(url).then(function() {
                 let aElement = document.createElement('a');
                 aElement.href = url;
@@ -34,8 +21,8 @@
         });
     }
 
-    function getLink() {
-        saveToImgur(function(url) {
+    function getLink(elementName) {
+        saveToImgur(elementName, function(url) {
             navigator.clipboard.writeText(url).then(function() {
                 alert('copied ' + url + " to clipboard");
             }, function(err) {
@@ -44,8 +31,8 @@
         });
     }
 
-    function shareToFacebook() {
-        saveToImgur(function(url) {
+    function shareToFacebook(elementName) {
+        saveToImgur(elementName, function(url) {
             window.open(
                 'https://www.facebook.com/sharer/sharer.php?u=' + url,
                 'facebook-share-dialog', 
@@ -53,8 +40,8 @@
             });
     }
 
-    function shareToTwitter(url) {
-        saveToImgur(function(url) {
+    function shareToTwitter(elementName, url) {
+        saveToImgur(elementName, function(url) {
             window.open(
                 'https://twitter.com/share?url=' + url + '&text=My USMNT team pick (with ussoccertrack.com)&hashtags=#USMNT,#ussoccertrack',
                 'twitter-share-dialog', 
@@ -62,11 +49,12 @@
             });
     }
 
-    function saveToImgur(chainFunction){
-        html2canvas(document.getElementById('field'), {useCORS: true}).then(function(canvas) {
+    function saveToImgur(elementName, chainFunction){
+        domtoimage.toJpeg(document.getElementById(elementName), { quality: 0.95 })
+        .then(function (dataUrl) {
             const formData = new FormData();
-            formData.append('image', canvas.toDataURL("image/png").split(',')[1]);
-        
+            formData.append('image', dateUrl.split(',')[1]);
+            
             fetch('https://api.imgur.com/3/image', {
                 method: 'POST',
                 mode: 'cors',
