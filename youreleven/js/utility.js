@@ -53,7 +53,7 @@
         domtoimage.toJpeg(document.getElementById(elementName), { quality: 0.95 })
         .then(function (dataUrl) {
             const formData = new FormData();
-            formData.append('image', dateUrl.split(',')[1]);
+            formData.append('image', dataUrl.split(',')[1]);
             
             fetch('https://api.imgur.com/3/image', {
                 method: 'POST',
