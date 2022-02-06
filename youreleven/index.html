@@ -159,9 +159,10 @@
 					target.appendChild(cloned);
 				});	
 
-				download('generated_area');
+				setTimeout(function() {
+					download('generated_area');
+				}, 1000);
 			}
-
 
 			function scrollToElement(elementName) {
 				document.getElementById(elementName).scrollIntoView( { behavior: 'smooth'});
