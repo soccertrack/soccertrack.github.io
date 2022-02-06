@@ -1,0 +1,689 @@
+<!DOCTYPE HTML>
+<!--
+	Miniport by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Miniport by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<style>
+			.flag {width:20px; height:20px;border: 1px solid gray;margin-right:5px; border-radius: 10px; }
+			html {
+				scroll-behavior: smooth;
+			}
+			
+		</style>
+
+		<script type="text/javascript" src="./js/html2canvas.js"></script>
+		<script type="text/javascript" src="./js/utility.js"></script>
+
+		<script>
+			const gkSet = new Set();
+			const dfSet = new Set();
+			const mfSet = new Set();
+			const fwSet = new Set();
+
+			function handleDf(idx) {
+				let rootElement = document.getElementById('defenders');
+				let articleElement = rootElement.querySelectorAll('article')[idx];
+
+				let imgs = articleElement.querySelectorAll("img");
+				console.log(imgs[0].src + " " + imgs[0].alt);
+				let isSelected = (imgs[1].style.opacity == 1.0);
+
+				if(isSelected) {
+					imgs[1].style.opacity = 0.0; 
+					dfSet.delete(idx);
+				} else {
+					if (dfSet.size == 9) {
+						alert('Please unselect a defender before selecting.');
+						return;
+					}
+
+					imgs[1].style.opacity = 1.0;
+					dfSet.add(idx);
+
+					if (dfSet.size == 9) {
+						scrollToElement('mf_instruction')
+					}
+				}
+			}
+
+			function handleMf(idx) {
+				let rootElement = document.getElementById('midfielders');
+				let articleElement = rootElement.querySelectorAll('article')[idx];
+
+				let imgs = articleElement.querySelectorAll("img");
+				console.log(imgs[0].src + " " + imgs[0].alt);
+				let isSelected = (imgs[1].style.opacity == 1.0);
+
+				if(isSelected) {
+					imgs[1].style.opacity = 0.0; 
+					mfSet.delete(idx);
+				} else {
+					
+					if (mfSet.size == 7) {
+						alert('Please unselect a midfielder before selecting.');
+						return;
+					}
+
+					imgs[1].style.opacity = 1.0;
+					mfSet.add(idx);
+
+					
+					if (mfSet.size == 7) {
+						scrollToElement('fw_instruction')
+					}
+				}
+			}
+
+			function handleFw(idx) {
+				let rootElement = document.getElementById('forwards');
+				let articleElement = rootElement.querySelectorAll('article')[idx];
+
+				let imgs = articleElement.querySelectorAll("img");
+				console.log(imgs[0].src + " " + imgs[0].alt);
+				let isSelected = (imgs[1].style.opacity == 1.0);
+
+				if(isSelected) {
+					imgs[1].style.opacity = 0.0; 
+					fwSet.delete(idx);
+				} else {
+					if (fwSet.size == 7) {
+						alert('Please unselect a forward before selecting.');
+						return;
+					}
+
+					imgs[1].style.opacity = 1.0;
+					fwSet.add(idx);
+
+					if (fwSet.size == 7) {
+						generate23();
+					}
+				}
+			}
+
+			function handleGK(idx) {
+				let rootElement = document.getElementById('goalkeepers');
+				let articleElement = rootElement.querySelectorAll('article')[idx];
+
+				let imgs = articleElement.querySelectorAll("img");
+				console.log(imgs[0].src + " " + imgs[0].alt);
+				let isSelected = (imgs[1].style.opacity == 1.0);
+
+				if(isSelected) {
+					imgs[1].style.opacity = 0.0; 
+					gkSet.delete(idx);
+				} else {
+					if (gkSet.size == 3) {
+						alert('Please unselect a goalkeeper before selecting.');
+						return;
+					}
+					
+					imgs[1].style.opacity = 1.0;
+					gkSet.add(idx);
+
+					if (gkSet.size == 3) {
+						scrollToElement('df_instruction')
+					}
+				}
+			}
+
+			function generate23() {
+				document.getElementById('generated_area').style.display = 'block';
+				
+				let gkRoot = document.getElementById('goalkeepers');
+				let dfRoot = document.getElementById('defenders');
+				let mfRoot = document.getElementById('midfielders');
+				let fwRoot = document.getElementById('forwards');
+				let target = document.getElementById('roster_generated');
+
+				gkSet.forEach(idx => {console.log(idx)
+					let cloned = gkRoot.children[idx].cloneNode(true);
+					target.appendChild(cloned);
+				});
+				dfSet.forEach(idx => {
+					let cloned = dfRoot.children[idx].cloneNode(true);
+					target.appendChild(cloned);
+				});
+				mfSet.forEach(idx => {
+					let cloned = mfRoot.children[idx].cloneNode(true);
+					target.appendChild(cloned);
+				});
+				fwSet.forEach(idx => {
+					let cloned = fwRoot.children[idx].cloneNode(true);
+					target.appendChild(cloned);
+				});	
+
+				download('generated_area');
+			}
+
+
+			function scrollToElement(elementName) {
+				document.getElementById(elementName).scrollIntoView( { behavior: 'smooth'});
+			}
+		</script>
+	</head>
+	<body class="is-preload">
+
+
+		<!-- Work -->
+			<article id="work" class="wrapper style2">
+				<div class="container">
+					<header>
+						<h2>What do you want to do?</h2>
+					</header>
+					<div class="row aln-center">
+						<div class="col-4 col-6-medium col-12-small">
+							<section class="box style1">
+								<span class="icon featured fa-comments"></span>
+								<h3>Pick your team formation. Pick your starting 11 players.</h3>
+								<p>This is your dream team to start a game.</p>
+								<a href="#portfolio" class="button large scrolly">Pick 11</a>
+							</section>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<section class="box style1">
+								<span class="icon solid featured fa-camera-retro"></span>
+								<h3>Pick your team roster. 23 players plus 3 stand-by.</h3>
+								<p>This is your <strong>USMNT</strong> team going to WCQ or Qatar.</p>
+								<a onclick="scrollToElement('gk_instruction');" class="button large scrolly">Pick Roster</a>
+							</section>
+						</div>
+					</div>
+				</div>
+			</article>
+
+		<!-- Portfolio -->
+			<article class="wrapper style3">
+				<div class="container">
+					<header id="gk_instruction">
+						<h2>Goalkeeper Candidates</h2>
+						<p>Pick 3 Goalkeepers</p>
+					</header>
+					<div class="row" id="goalkeepers">
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleGK(0);"  id="pickkeeper">
+								<span class="image featured"><img src="players/BillHamid.jpg" alt="Bill Hamid" /></span>
+								Goalkeeper<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left: 10px;"/>
+								<h3>Bill Hamid</h3>
+								<p><img src="flags/USA.svg" class="flag"/>DC United</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleGK(1);">
+								<span class="image featured"><img src="players/EthanHorvath.jpg" alt="Ethan Horvath" /></span>
+								Goalkeeper<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left: 10px;"/>
+								<h3>Ethan Horvath</h3>
+								<p><img src="flags/England.svg" class="flag"/>Nottingham Forest</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleGK(2);">
+								<span class="image featured"><img src="players/GabrielSloninia.png" alt="Gabriel Sloninia" /></span>
+								Goalkeeper<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left: 10px;"/>
+								<h3>Gabriel Sloninia</h3>
+								<p><img src="flags/USA.svg" class="flag"/>Chicago Fire</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleGK(3);">
+								<span class="image featured"><img src="players/MattTurner.jpg" alt="Matt Turner" /></span>
+								Goalkeeper<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left: 10px;"/>
+								<h3>Matt Turner</h3>
+								<p><img src="flags/England.svg" class="flag"/>Arsenal</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleGK(4);">
+								<span class="image featured"><img src="players/SeanJohnson.jpg" alt="Sean Johnson" /></span>
+								Goalkeeper<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left: 10px;"/>
+								<h3>Sean Johnson</h3>
+								<p><img src="flags/USA.svg" class="flag"/>NYC FC</p>
+							</article>
+						</div>
+						
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleGK(5);">
+								<span class="image featured"><img src="players/ZackSteffen.jpg" alt="Zack Steffen" /></span>
+								Goalkeeper<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left: 10px;"/>
+								<h3>Zack Steffen</h3>
+								<p><img src="flags/England.svg" class="flag"/>Manchester City</p>
+							</article>
+						</div>
+					</div>
+				</div>
+
+			</article>
+
+			<article id="portfolio" class="wrapper style3">
+				<div class="container">
+					<header id="df_instruction">
+						<h2>Defender Candidates</h2>
+						<p>Pick 8 defenders + 1 stand-by</p>
+					</header>
+					<div class="row" id="defenders">
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleDf(0);">
+								<span class="image featured"><img src="players/AaronLong.jpg" alt="Aaron Long" /></span>
+								center back<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Aaron Long</h3>
+								<p><img src="flags/USA.svg" class="flag"/>NY Red Bulls</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleDf(1);">
+								<span class="image featured"><img src="players/ChrisRichards.jpg" alt="Chris Richards" /></span>
+								center back | right back<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Chris Richards</h3>
+								<p><img src="flags/Germany.svg" class="flag"/>1899 Hoffenheim</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleDf(2);">
+								<span class="image featured"><img src="players/JamesSands.jpg" alt="James Sands" /></span>
+								center back<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>James Sands</h3>
+								<p><img src="flags/Scotland.svg" class="flag"/>Rangers FC</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleDf(3);">
+								<span class="image featured"><img src="players/JohnBrooks.jpg" alt="John Brooks" /></span>
+								center back<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>John Brooks</h3>
+								<p><img src="flags/Germany.svg" class="flag"/>Wolfsburg FC</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleDf(4);">
+								<span class="image featured"><img src="players/MarkMcKenzie.jpg" alt="Mark McKenzie" /></span>
+								center back<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Mark McKenzie</h3>
+								<p><img src="flags/Belgium.svg" class="flag"/>Genk</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleDf(5);">
+								<span class="image featured"><img src="players/MattMiazga.jpg" alt="Matt Miazga" /></span>
+								center back<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Matt Miazga</h3>
+								<p><img src="flags/Spain.svg" class="flag"/>Deportivo Alavés</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleDf(6);">
+								<span class="image featured"><img src="players/MilesRobinson.jpg" alt="Miles Robinson" /></span>
+								center back<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Miles Robinson</h3>
+								<p><img src="flags/USA.svg" class="flag"/>Atlanta FC</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleDf(7);">
+								<span class="image featured"><img src="players/TimReam.jpg" alt="Tim Ream" /></span>
+								center back | left back<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Tim Ream</h3>
+								<p><img src="flags/England.svg" class="flag"/>Fulham FC</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleDf(8);">
+								<span class="image featured"><img src="players/WalkerZimmerman.jpg" alt="Walker Zimmerman" /></span>
+								center back<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Walker Zimmerman</h3>
+								<p><img src="flags/USA.svg" class="flag"/>Nashville SC</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleDf(9);">
+								<span class="image featured"><img src="players/AntoneeRobinson.jpg" alt="Antonee Robinson" /></span>
+								left back<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Antonee Robinson</h3>
+								<p><img src="flags/England.svg" class="flag"/>Fulham FC</p>
+							</article>
+						</div>
+
+
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleDf(10);">
+								<span class="image featured"><img src="players/DeAndreYedlin.jpg" alt="DeAndre Yedlin" /></span>
+								right back<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>DeAndre Yedlin</h3>
+								<p><img src="flags/Turkey.svg" class="flag"/>Galatasaray</p>
+							</article>
+						</div>
+
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleDf(11);">
+								<span class="image featured"><img src="players/GeorgeBello.jpg" alt="George Bello" /></span>
+								left back<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>George Bello</h3>
+								<p><img src="flags/Germany.svg" class="flag"/>Arminia Bielefeld</p>
+							</article>
+						</div>
+
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleDf(12);">
+								<span class="image featured"><img src="players/JoeScally.jpg" alt="Joe Scally" /></span>
+								left back | right back<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Joe Scally</h3>
+								<p><img src="flags/Germany.svg" class="flag"/>Borussia Mönchengladbach</p>
+							</article>
+						</div>
+
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleDf(13);">
+								<span class="image featured"><img src="players/ReggieCannon.jpg" alt="Reggie Cannon" /></span>
+								right back<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Reggie Cannon</h3>
+								<p><img src="flags/Portugal.svg" class="flag"/>Boavista</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleDf(14);">
+								<span class="image featured"><img src="players/SamVines.jpg" alt="Sam Vines" /></span>
+								left back<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Sam Vines</h3>
+								<p><img src="flags/Belgium.svg" class="flag"/>Royal Antwerp FC</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleDf(15);">
+								<span class="image featured"><img src="players/SerginoDest.jpg" alt="Sergino Dest" /></span>
+								right back | left back<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Sergino Dest</h3>
+								<p><img src="flags/Spain.svg" class="flag"/>FC Barcelona</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleDf(16);">
+								<span class="image featured"><img src="players/ShaqMoore.jpg" alt="Shaq Moore" /></span>
+								right back<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Shaq Moore</h3>
+								<p><img src="flags/Spain.svg" class="flag"/>CD Tenerife</p>
+							</article>
+						</div>
+
+					</div>
+				</div>
+			</article>
+
+			<article class="wrapper style3">
+				<div class="container">
+					<header id="mf_instruction">
+						<h2>Midfielder Candidates</h2>
+						<p>Pick 6 Midfielders + 1 stand-by</p>
+					</header>
+					<div class="row" id="midfielders">
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleMf(0);">
+								<span class="image featured"><img src="players/CristianRoldan.jpg" alt="Cristian Roldan" /></span>
+								midfield<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Cristian Roldan</h3>
+								<p><img src="flags/USA.svg" class="flag"/>Seattle Sounders FC</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleMf(1);">
+								<span class="image featured"><img src="players/ErykWilliamson.jpg" alt="Eryk Williamson" /></span>
+								midfield<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Eryk Williamson</h3>
+								<p><img src="flags/USA.svg" class="flag"/>Portland Timbers FC</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleMf(2);">
+								<span class="image featured"><img src="players/GianlucaBusio.jpg" alt="Gianluca Busio" /></span>
+								defensive midfield | midfield<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Gianluca Busio</h3>
+								<p><img src="flags/Italy.svg" class="flag"/>Venezia FC</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleMf(3);">
+								<span class="image featured"><img src="players/GiovanniReyna.jpg" alt="Giovanni Reyna" /></span>
+								attacking midfield | right wing<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Giovanni Reyna</h3>
+								<p><img src="flags/Germany.svg" class="flag"/>Borussia Dortmund</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleMf(4);">
+								<span class="image featured"><img src="players/JacksonYueill.jpg" alt="Jackson Yueill" /></span>
+								defensive midfield<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Jackson Yueill</h3>
+								<p><img src="flags/USA.svg" class="flag"/>San Jose Earthquakes</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleMf(5);">
+								<span class="image featured"><img src="players/KellynAcosta.jpg" alt="Kellyn Acosta" /></span>
+								defensive midfield<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Kellyn Acosta</h3>
+								<p><img src="flags/USA.svg" class="flag"/>LA FC</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleMf(6);">
+								<span class="image featured"><img src="players/LucadelaTorre.jpg" alt="Luca de la Torre" /></span>
+								midfield<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Luca de la Torre</h3>
+								<p><img src="flags/Netherland.svg" class="flag"/>Heracle FC</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleMf(7);">
+								<span class="image featured"><img src="players/RichardLedezma.jpeg" alt="Richard Ledezma" /></span>
+								midfield<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Richard Ledezma</h3>
+								<p><img src="flags/Netherland.svg" class="flag"/>PSV</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleMf(8);">
+								<span class="image featured"><img src="players/SebastianLletget.jpg" alt="Sebastian Lletget" /></span>
+								midfield<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Sebastian Lletget</h3>
+								<p><img src="flags/USA.svg" class="flag"/>LA Galaxy</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleMf(9);">
+								<span class="image featured"><img src="players/TylerAdams.jpg" alt="Tyler Adams" /></span>
+								midfield<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Tyler Adams</h3>
+								<p><img src="flags/Germany.svg" class="flag"/>RB Leipzig</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleMf(10);">
+								<span class="image featured"><img src="players/WestonMcKennie.jpg" alt="Weston McKennie" /></span>
+								midfield<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Weston McKennies</h3>
+								<p><img src="flags/Italy.svg" class="flag"/>Juventus</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleMf(11);">
+								<span class="image featured"><img src="players/YunusMusah.jpg" alt="Yunus Musah" /></span>
+								midfield<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Yunus Musah</h3>
+								<p><img src="flags/Spain.svg" class="flag"/>Valencia</p>
+							</article>
+						</div>
+					</div>
+				</div>
+			</article>
+
+			<article class="wrapper style3">
+				<div class="container">
+					<header id="fw_instruction">
+						<h2>Forward Candidates</h2>
+						<p>Pick 6 Forwards/Winger + 1 stand-by</p>
+					</header>
+					<div class="row" id="forwards">
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleFw(0);">
+								<span class="image featured"><img src="players/BrendenAaronson.jpg" alt="Brenden Aaronson" /></span>
+								left wing | right wing<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Brenden Aaronson</h3>
+								<p><img src="flags/Austria.svg" class="flag"/>RB Salzburg</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleFw(1);">
+								<span class="image featured"><img src="players/ChristianPulisic.jpg" alt="Christian Pulisic" /></span>
+								left wing | forward<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Christian Pulisic</h3>
+								<p><img src="flags/England.svg" class="flag"/>Chelsea</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleFw(2);">
+								<span class="image featured"><img src="players/DarylDike.jpg" alt="Daryl Dike" /></span>
+								center forward<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Daryl Dike</h3>
+								<p><img src="flags/England.svg" class="flag"/>West Bromwich Albion</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleFw(3);">
+								<span class="image featured"><img src="players/GyasiZardes.jpg" alt="Gyasi Zardes" /></span>
+								center forward<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Gyasi Zardes</h3>
+								<p><img src="flags/USA.svg" class="flag"/>Columbus Crew</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleFw(4);">
+								<span class="image featured"><img src="players/JesusFerreira.jpg" alt="Jesus Ferreira" /></span>
+								forward<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Jesus Ferreiras</h3>
+								<p><img src="flags/USA.svg" class="flag"/>FC Dallas</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleFw(5);">
+								<span class="image featured"><img src="players/JordanMorris.jpg" alt="Jordan Morris" /></span>
+								left wing | forward<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Jordan Morris</h3>
+								<p><img src="flags/USA.svg" class="flag"/>Seattle Sounders</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleFw(6);">
+								<span class="image featured"><img src="players/JordanPefok.jpg" alt="Jordan Pefok" /></span>
+								center forward<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Jordan Pefok</h3>
+								<p><img src="flags/Switzerland.svg" class="flag"/>Young Boys</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleFw(7);">
+								<span class="image featured"><img src="players/JoshSargent.jpg" alt="Josh Sargent" /></span>
+								center forward | right wing<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Josh Sargent</h3>
+								<p><img src="flags/England.svg" class="flag"/>Norwich</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleFw(8);">
+								<span class="image featured"><img src="players/KonradDeLaFuente.jpg" alt="Konrad De La Fuente" /></span>
+								left wing<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Konrad De La Fuente</h3>
+								<p><img src="flags/France.svg" class="flag"/>Marseille</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleFw(9);">
+								<span class="image featured"><img src="players/MatthewHoppe.jpg" alt="Matthew Hoppe" /></span>
+								left wing | forward<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Matthew Hoppe</h3>
+								<p><img src="flags/Spain.svg" class="flag"/>RCD Mallorca</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleFw(10);">
+								<span class="image featured"><img src="players/NicholasGioacchini.jpg" alt="Nicholas Gioacchini" /></span>
+								right wing<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Nicholas Gioacchini</h3>
+								<p><img src="flags/France.svg" class="flag"/>Montpellier</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleFw(11);">
+								<span class="image featured"><img src="players/PaulArriola.jpg" alt="Paul Arriola" /></span>
+								right wing<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Paul Arriola</h3>
+								<p><img src="flags/USA.svg" class="flag"/>FC Dallas</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleFw(12);">
+								<span class="image featured"><img src="players/RichardoPepi.jpg" alt="Richardo Pepi" /></span>
+								center forward<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Richardo Pepi</h3>
+								<p><img src="flags/Germany.svg" class="flag"/>FC Augsburg</p>
+							</article>
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+							<article class="box style2" onclick="handleFw(13);">
+								<span class="image featured"><img src="players/TimothyWeah.jpg" alt="Timothy Weah" /></span>
+								right wing<img src="assets/check.svg" width="20" height="20" style="opacity: 0;margin-left:10px;"/>
+								<h3>Timothy Weah</h3>
+								<p><img src="flags/France.svg" class="flag"/>Lille</p>
+							</article>
+						</div>
+					</div>
+				</div>
+			</article>
+
+			<article class="wrapper style3" id="generated_area" style="display:none;">
+				<div class="container">
+					<header>
+						<h2>My USMNT Roster (23 + 3)</h2>
+					</header>
+					<div class="row" id="roster_generated">
+					</div>
+				</div>
+			</article>
+
+		<!-- Contact -->
+			<article id="contact" class="wrapper style4">
+				<div class="container medium">
+					<div class="row">
+						
+						<div class="col-12">
+							<hr />
+							<h3>Find me on ...</h3>
+							<ul class="social">
+								<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+								<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+								<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+							</ul>
+							<hr/>
+						</div>
+					</div>
+					<footer>
+						<ul id="copyright">
+							<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</footer>
+				</div>
+			</article>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
