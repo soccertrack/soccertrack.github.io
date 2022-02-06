@@ -1,5 +1,6 @@
 
     function download(elementName){
+        /*
         html2canvas(document.getElementById(elementName), {useCORS:true}).then(function(canvas) {
             let ctx = canvas.getContext('2d');
             ctx.webkitImageSmoothingEnabled = true;
@@ -10,7 +11,15 @@
             aElement.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
             aElement.download = 'myusmnt-roster.jpg';
             aElement.click();
-        });
+            */
+        //});
+        domtoimage.toJpeg(document.getElementById(elementName), { quality: 0.95 })
+            .then(function (dataUrl) {
+                var link = document.createElement('a');
+                link.download = 'my-usmnt-roster.jpeg';
+                link.href = dataUrl;
+                link.click();
+            });
     }
 
     function getLink2() {
