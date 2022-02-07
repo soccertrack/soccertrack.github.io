@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>YourEleven.com</title>
+		<title>OurEleven.com</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -114,7 +114,7 @@
 						fwSet.add(idx);
 
 						if (fwSet.size == 7) {
-							generate23();
+							scrollToElement('share', true);
 						}
 					}
 				} else {
@@ -332,7 +332,12 @@
 				allShares[idx].style.opacity = 1;
 				share_option = idx;
 
-				scrollToElement('work', true);
+				if (mode == 'roster') {
+					generate23();
+				} else {
+					generate11();
+				}
+
 			}
 
 			var idxToUpdate = 0;
@@ -360,45 +365,6 @@
 	</head>
 	<body class="is-preload">
 
-
-		<!-- Work -->
-		<article id="share" class="wrapper style2">
-			<div class="container">
-				<header>
-					<h2>How do you want to share your team? Pick one.</h2>
-				</header>
-				<div class="row aln-center">
-					<div class="col-4 col-6-medium col-12-small" onclick="handleShareOption(0)">
-						<section class="box style1">
-							<span class="fas fa-download" style="width:50px;color:black;"></span>
-							<h3>Download PNG</h3>
-							<img src="assets/checkmark.png" class="checkmark share" width="20" height="20" style="opacity: 1;margin-left: 10px;"/>
-						</section>
-					</div>
-					<div class="col-4 col-6-medium col-12-small" onclick="handleShareOption(1)">
-						<section class="box style1">
-							<span class="fas fa-link" style="color:red;"></span>
-							<h3>Get sharable URL link</h3>
-							<img src="assets/checkmark.png" class="checkmark share" width="20" height="20" style="opacity: 0;margin-left: 10px;"/>
-						</section>
-					</div>
-					<div class="col-4 col-6-medium col-12-small" onclick="handleShareOption(2)">
-						<section class="box style1">
-							<span class="icon brands fa-twitter" style="color:lightskyblue;"></span>
-							<h3>Share to twitter</h3>
-							<img src="assets/checkmark.png" class="checkmark share" width="20" height="20" style="opacity: 0;margin-left: 10px;"/>
-						</section>
-					</div>
-					<div class="col-4 col-6-medium col-12-small" onclick="handleShareOption(3)">
-						<section class="box style1">
-							<span class="icon brands fa-facebook-f" style="color:blue;"></span>
-							<h3>Share to facebook</h3>
-							<img src="assets/checkmark.png" class="checkmark share" width="20" height="20" style="opacity: 0;margin-left: 10px;"/>
-						</section>
-					</div>
-				</div>
-			</div>
-		</article>
 			<article id="work" class="wrapper style2">
 				<div class="container">
 					<header>
@@ -428,7 +394,7 @@
 			<article id="team" style="display:none;" class="wrapper style2">
 				<header>
 					<h2>Pick your team, select position and pick players</h2>
-					<a id="generate_button" style="display:none;margin: auto; width: 50%;" class="button aln-center" onclick="generate11();">Share my team</a>
+					<a id="generate_button" style="display:none;margin: auto; width: 50%;" class="button aln-center" onclick="scrollToElement('share');">Share my team</a>
 				</header>
 		
 				<div id="field" class="container" style="position:relative;width:560px;height:840px;background-image: url('images/field.png');">
@@ -932,6 +898,44 @@
 				</div>
 			</article>
 
+			<!-- Work -->
+		<article id="share" class="wrapper style2">
+			<div class="container">
+				<header>
+					<h2>How do you want to share your team? Pick one.</h2>
+				</header>
+				<div class="row aln-center">
+					<div class="col-4 col-6-medium col-12-small" onclick="handleShareOption(0)">
+						<section class="box style1">
+							<span class="fas fa-download" style="width:50px;color:black;"></span>
+							<h3>Download PNG</h3>
+							<img src="assets/checkmark.png" class="checkmark share" width="20" height="20" style="opacity: 1;margin-left: 10px;"/>
+						</section>
+					</div>
+					<div class="col-4 col-6-medium col-12-small" onclick="handleShareOption(1)">
+						<section class="box style1">
+							<span class="fas fa-link" style="color:red;"></span>
+							<h3>Get sharable URL link</h3>
+							<img src="assets/checkmark.png" class="checkmark share" width="20" height="20" style="opacity: 0;margin-left: 10px;"/>
+						</section>
+					</div>
+					<div class="col-4 col-6-medium col-12-small" onclick="handleShareOption(2)">
+						<section class="box style1">
+							<span class="icon brands fa-twitter" style="color:lightskyblue;"></span>
+							<h3>Share to twitter</h3>
+							<img src="assets/checkmark.png" class="checkmark share" width="20" height="20" style="opacity: 0;margin-left: 10px;"/>
+						</section>
+					</div>
+					<div class="col-4 col-6-medium col-12-small" onclick="handleShareOption(3)">
+						<section class="box style1">
+							<span class="icon brands fa-facebook-f" style="color:blue;"></span>
+							<h3>Share to facebook</h3>
+							<img src="assets/checkmark.png" class="checkmark share" width="20" height="20" style="opacity: 0;margin-left: 10px;"/>
+						</section>
+					</div>
+				</div>
+			</div>
+		</article>
 			<article class="wrapper style3" id="generated_area" style="display:none;">
 				<div class="container">
 					<header>
@@ -960,7 +964,7 @@
 					</div>
 					<footer>
 						<ul id="copyright">
-							<li>&copy; YourEleven.com. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							<li>&copy; OurEleven.com. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 						</ul>
 					</footer>
 				</div>
