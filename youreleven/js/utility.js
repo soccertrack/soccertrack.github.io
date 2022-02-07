@@ -43,7 +43,7 @@
     function shareToTwitter(elementName) {
         saveToImgur(elementName, function(url) {
             window.open(
-                'https://twitter.com/share?url=' + url + '&text=My USMNT squad pick (with youreleven.com)&hashtags=#USMNT,#ussoccertrack',
+                'https://twitter.com/share?url=' + url + '&text=My USMNT squad pick (with oureleven.com)&hashtags=#USMNT,#oureleven',
                 'twitter-share-dialog', 
                 'width=626,height=436'); 
             });
