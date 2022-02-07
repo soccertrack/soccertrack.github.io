@@ -180,16 +180,16 @@
 				
 				switch(share_option) {
 					case 0: 
-						download('team');
+						download('field');
 						break;
 					case 1:
-						getLink('team');
+						getLink('field');
 						break;
 					case 2:
-						shareToTwitter('team');
+						shareToTwitter('field');
 						break;
 					case 3:
-						shareToFacebook('team');
+						shareToFacebook('field');
 						break;
 				}
 			}
@@ -291,14 +291,14 @@
 				} else { // team 11
 
 					if (shadowField == null) {
-						shadowField = document.getElementById('field').cloneNode(true);
-						shadowField.id = "_temp";
+						//shadowField = document.getElementById('field').cloneNode(true);
+						//shadowField.id = "_temp";
 					} else {
-						document.getElementById('field').remove();
-						shadowField.id = 'field';
-						document.getElementById('team').appendChild(shadowField);
-						shadowField = document.getElementById('field').cloneNode(true);
-						shadowField.id = "_temp";
+						//document.getElementById('field').remove();
+						//shadowField.id = 'field'
+						//document.getElementById('team').appendChild(shadowField);
+						//shadowField = document.getElementById('field').cloneNode(true);
+						//shadowField.id = "_temp";
 					}
 					
 
