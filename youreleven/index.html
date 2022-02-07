@@ -277,10 +277,6 @@
 				resetSelection();
 
 				if (type == 'roster') {
-					document.getElementById('defenders').style.display = 'block';
-					document.getElementById('midfielders').style.display = 'block';
-					document.getElementById('forwards').style.display = 'block';
-					document.getElementById('goalkeepers').style.display = 'block';
 					document.getElementById('team').style.display = 'none';
 					
 					document.getElementById("generate_button").style.display = 'none';
@@ -296,10 +292,13 @@
 
 					if (shadowField == null) {
 						shadowField = document.getElementById('field').cloneNode(true);
+						shadowField.id = "_temp";
 					} else {
 						document.getElementById('field').remove();
+						shadowField.id = 'field';
 						document.getElementById('team').appendChild(shadowField);
 						shadowField = document.getElementById('field').cloneNode(true);
+						shadowField.id = "_temp";
 					}
 					
 
